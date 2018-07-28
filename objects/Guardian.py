@@ -60,7 +60,7 @@ class Guardian:
         thisString += "  Name             : " + str(self.name) + "\n"
 
         thisString += "  Equipment IDs    : "
-        for equipmentType in range(len(EquipmentType)):
+        for equipmentType in EquipmentType:
             if self.equipments.has_key(equipmentType):
                 thisString += str(self.equipments[equipmentType].id) + " "
         thisString += "\n"
