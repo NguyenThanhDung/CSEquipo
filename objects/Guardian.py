@@ -48,12 +48,12 @@ class Guardian:
 
     def GetFinalStats(self):
         finalStats = {}
-
-        for statisticType in len(StatisticType):
+        for statisticType in StatisticType:
             finalStats[statisticType] = self.statistics[statisticType]
-            for equipmentType in len(EquipmentType):
+            for equipmentType in EquipmentType:
                 # TODO: Add collect effect
                 finalStats[statisticType] += self.equipments[equipmentType].GetBuffedStatistic(statisticType, self)
+        return finalStats
 
     def ToString(self):
         thisString = "Guardian #" + str(self.id) + "\n"
@@ -105,5 +105,10 @@ class Guardian:
                 thisString += str(setBuffPercent.get("ReduceTargetMaxHP", "")) + "   "
                 thisString += str(setBuffPercent.get("Stun", "")) + "   "
                 thisString += "\n"
-        thisString += "\n"
+
+        finalStats = self.GetFinalStats()
+        thisString += "  Final Statistic  :"
+        for statisticType in StatisticType:
+            thisString += str(finalStats[statisticType]).rjust(10)
+
         return thisString
