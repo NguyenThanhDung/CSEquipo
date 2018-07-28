@@ -1,9 +1,14 @@
 from Defines import StatisticType
+from Defines import SetType
+from Defines import SpecialAbility
 from Defines import ValueType
 
 class Equipment:
 
-    def __init__(self, id, equipmentType, atkPercent, atkPlus, defPercent, defPlus, pincerAtkPercent, pincerAtkPlus, hpPercent, hpPlus, crtRate, crtDmg, accuracy, resistance, set, starCount, level):
+    def __init__(self, id, equipmentType, atkPercent, atkPlus, defPercent, defPlus, \
+        pincerAtkPercent, pincerAtkPlus, hpPercent, hpPlus, crtRate, crtDmg, accuracy, resistance,  \
+        set, starCount, level):
+
         self.id = id
         self.type = equipmentType
 
@@ -30,9 +35,35 @@ class Equipment:
         self.statistics[StatisticType.Accuracy] = accuracy or 0
         self.statistics[StatisticType.Resistance] = resistance or 0
 
-        self.set = set
+        self.set = self.SetNameToSetType(set)
         self.starCount = starCount
         self.level = level
+
+    def SetNameToSetType(self, setName):
+        if setName == "Strike":
+            return SetType.Strike
+        elif setName == "Guard":
+            return SetType.Guard
+        elif setName == "Pincer":
+            return SetType.Pincer
+        elif setName == "Energy":
+            return SetType.Energy
+        elif setName == "Blade":
+            return SetType.Blade
+        elif setName == "Violent":
+            return SetType.Violent
+        elif setName == "Focus":
+            return SetType.Focus
+        elif setName == "Endure":
+            return SetType.Endure
+        elif setName == "Revenge":
+            return SpecialAbility.CounterAttack
+        elif setName == "Vampire":
+            return SpecialAbility.LifeDrain
+        elif setName == "Pulverize":
+            return SpecialAbility.ReduceTargetMaxHP
+        elif setName == "Stun":
+            return SpecialAbility.Stun
     
     def GetStatistic(self, statisticType):
         return self.statistics[statisticType]
@@ -60,30 +91,30 @@ class Equipment:
         return thisString
     
     @staticmethod
-    def GetSetBuff(setName, guardian):
+    def GetSetBuff(setType, guardian):
         setBuff = {}
-        if setName == "Strike":
-            setBuff["atk"] = guardian.statistics[StatisticType.Attack] * 0.1
-        elif setName == "Guard":
-            setBuff["def"] = guardian.statistics[StatisticType.Defend] * 0.1
-        elif setName == "Pincer":
-            setBuff["pincerAtk"] = guardian.statistics[StatisticType.PincerAttack] * 0.1
-        elif setName == "Energy":
-            setBuff["hp"] = guardian.statistics[StatisticType.HP] * 0.1
-        elif setName == "Blade":
-            setBuff["crtRate"] = 8
-        elif setName == "Violent":
-            setBuff["crtDmg"] = 0
-        elif setName == "Focus":
-            setBuff["acc"] =15
-        elif setName == "Endure":
-            setBuff["res"] = 15
-        elif setName == "Revenge":
-            setBuff["CounterAtk"] = 10
-        elif setName == "Vampire":
-            setBuff["LifeDrain"] = 20
-        elif setName == "Pulverize":
-            setBuff["ReduceTargetMaxHP"] = 3
-        elif setName == "Stun":
-            setBuff["Stun"] = 20
+        if setType == SetType.Strike:
+            setBuff[StatisticType.Attack] = guardian.statistics[StatisticType.Attack] * 0.1
+        elif setType == SetType.Guard:
+            setBuff[StatisticType.Defend] = guardian.statistics[StatisticType.Defend] * 0.1
+        elif setType == SetType.Pincer:
+            setBuff[StatisticType.PincerAttack] = guardian.statistics[StatisticType.PincerAttack] * 0.1
+        elif setType == SetType.Energy:
+            setBuff[StatisticType.HP] = guardian.statistics[StatisticType.HP] * 0.1
+        elif setType == SetType.Blade:
+            setBuff[StatisticType.CrtRate] = 8
+        elif setType == SetType.Violent:
+            setBuff[StatisticType.CrtDmg] = 0
+        elif setType == SetType.Focus:
+            setBuff[StatisticType.Accuracy] =15
+        elif setType == SetType.Endure:
+            setBuff[StatisticType.Resistance] = 15
+        elif setType == SetType.Revenge:
+            setBuff[SpecialAbility.CounterAttack] = 10
+        elif setType == SetType.Vampire:
+            setBuff[SpecialAbility.LifeDrain] = 20
+        elif setType == SetType.Pulverize:
+            setBuff[SpecialAbility.ReduceTargetMaxHP] = 3
+        elif setType == SetType.Stun:
+            setBuff[SpecialAbility.Stun] = 20
         return setBuff
