@@ -27,14 +27,16 @@ class Guardian:
         self.statistics[StatisticType.Accuracy] = acc
         self.statistics[StatisticType.Resistance] = res
 
-        self.collectionEffectAtk = collectionEffectAtk or 0
-        self.collectionEffectDef = collectionEffectDef or 0
-        self.collectionEffectPincerAtk = collectionEffectPincerAtk or 0
-        self.collectionEffectHp = collectionEffectHp or 0
-        self.collectionEffectCrtRate = collectionEffectCrtRate or 0
-        self.collectionEffectCrtDmg = collectionEffectCrtDmg or 0
-        self.collectionEffectAcc = collectionEffectAcc or 0
-        self.collectionEffectRes = collectionEffectRes or 0
+        self.collectionEffects = {}
+        self.collectionEffects[StatisticType.Attack] = collectionEffectAtk or 0
+        self.collectionEffects[StatisticType.Defend] = collectionEffectDef or 0
+        self.collectionEffects[StatisticType.PincerAttack] = collectionEffectPincerAtk or 0
+        self.collectionEffects[StatisticType.HP] = collectionEffectHp or 0
+        self.collectionEffects[StatisticType.CrtRate] = collectionEffectCrtRate or 0
+        self.collectionEffects[StatisticType.CrtDmg] = collectionEffectCrtDmg or 0
+        self.collectionEffects[StatisticType.Accuracy] = collectionEffectAcc or 0
+        self.collectionEffects[StatisticType.Resistance] = collectionEffectRes or 0
+
         self.equipmentSets = {}
     
     def Equip(self, equipment, equipmentType):
@@ -51,8 +53,8 @@ class Guardian:
         finalStats = {}
         for statisticType in StatisticType:
             finalStats[statisticType] = self.statistics[statisticType]
+            finalStats[statisticType] += self.collectionEffects[statisticType]
             for equipmentType in EquipmentType:
-                # TODO: Add collect effect
                 finalStats[statisticType] += self.equipments[equipmentType].GetBuffedStatistic(statisticType, self)
             for key in self.equipmentSets.keys():
                 if self.equipmentSets[key] >= 2:
@@ -78,14 +80,9 @@ class Guardian:
         thisString += "\n"
 
         thisString += "  Collection Effect:"
-        thisString += str(self.collectionEffectAtk).rjust(10)
-        thisString += str(self.collectionEffectDef).rjust(10)
-        thisString += str(self.collectionEffectPincerAtk).rjust(10)
-        thisString += str(self.collectionEffectHp).rjust(10)
-        thisString += str(self.collectionEffectCrtRate).rjust(10)
-        thisString += str(self.collectionEffectCrtDmg).rjust(10)
-        thisString += str(self.collectionEffectAcc).rjust(10)
-        thisString += str(self.collectionEffectRes).rjust(10) + "\n"
+        for statisticType in StatisticType:
+            thisString += str(self.collectionEffects[statisticType]).rjust(10)
+        thisString += "\n"
 
         for equipmentType in EquipmentType:
             thisString += (equipmentType.name + " Buff:").rjust(20)
