@@ -54,6 +54,10 @@ class Guardian:
             for equipmentType in EquipmentType:
                 # TODO: Add collect effect
                 finalStats[statisticType] += self.equipments[equipmentType].GetBuffedStatistic(statisticType, self)
+            for key in self.equipmentSets.keys():
+                if self.equipmentSets[key] >= 2:
+                    setBuffPercent = Equipment.GetSetBuff(key, self)
+                    finalStats[statisticType] += setBuffPercent.get(statisticType, 0)
         return finalStats
 
     def ToString(self):
