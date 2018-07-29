@@ -1,5 +1,7 @@
 import json
+from Defines import EquipmentType
 from Equipment import Equipment
+from EquipmentSet import EquipmentSet
 
 class EquipmentList:
 
@@ -22,6 +24,37 @@ class EquipmentList:
         for equipment in self.equipments:
             if equipment.id == id:
                 return equipment
+
+    def GenerateEquipmentSet(self):
+        weapons = []
+        armors = []
+        shields = []
+        glovesList = []
+        necklaces = []
+        rings = []
+        for equipment in self.equipments:
+            if equipment.type == EquipmentType.Weapon:
+                weapons.append(equipment)
+            elif equipment.type == EquipmentType.Armor:
+                armors.append(equipment)
+            elif equipment.type == EquipmentType.Shield:
+                shields.append(equipment)
+            elif equipment.type == EquipmentType.Gloves:
+                glovesList.append(equipment)
+            elif equipment.type == EquipmentType.Necklace:
+                necklaces.append(equipment)
+            elif equipment.type == EquipmentType.Ring:
+                rings.append(equipment)
+        equipmentSets = []
+        for weapon in weapons:
+            for armor in armors:
+                for shield in shields:
+                    for gloves in glovesList:
+                        for necklace in necklaces:
+                            for ring in rings:
+                                equipmentSet = EquipmentSet(weapon, armor, shield, gloves, necklace, ring)
+                                equipmentSets.append(equipmentSet)
+        return equipmentSets
     
     def ToString(self):
         thisString = "EQUIPMENT LIST:\n\n"

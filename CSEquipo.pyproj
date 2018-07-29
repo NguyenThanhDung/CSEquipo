@@ -23,6 +23,9 @@
     <Compile Include="objects\Defines.py" />
     <Compile Include="objects\Equipment.py" />
     <Compile Include="objects\EquipmentList.py" />
+    <Compile Include="objects\EquipmentSet.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="objects\Guardian.py" />
     <Compile Include="objects\GuardianList.py" />
     <Compile Include="objects\StatPrio.py">
