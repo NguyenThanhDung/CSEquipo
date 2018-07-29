@@ -55,6 +55,9 @@ class EquipmentList:
                                 equipmentSet = EquipmentSet(weapon, armor, shield, gloves, necklace, ring)
                                 equipmentSets.append(equipmentSet)
         return equipmentSets
+
+    def Remove(self, equipment):
+        self.equipments.remove(equipment)
     
     def ToString(self):
         thisString = "EQUIPMENT LIST:\n\n"

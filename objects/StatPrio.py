@@ -2,8 +2,8 @@ from Defines import StatisticType
 
 class StatPrio:
 
-    def __init__(self, guardian, prioStat):
-        self.guardian = guardian
+    def __init__(self, guardianName, prioStat):
+        self.guardianName = guardianName
         self.prioStat = self.StatNameToStatType(prioStat)
 
     def StatNameToStatType(self, statName):
@@ -25,4 +25,4 @@ class StatPrio:
             return StatisticType.Resistance
 
     def ToString(self):
-        return self.guardian.ljust(15) + ": " + str(self.prioStat)
+        return self.guardianName.ljust(15) + ": " + str(self.prioStat)

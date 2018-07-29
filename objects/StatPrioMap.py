@@ -17,6 +17,11 @@ class StatPrioMap:
             statPrioMap.append(statPrio)
         return statPrioMap
 
+    def GetDesireStat(self, guardian):
+        for item in self.statPrioMap:
+            if item.guardianName == guardian.name:
+                return item.prioStat
+
     def ToString(self):
         thisString = "STAT PRIO MAP:\n\n"
         for statPrio in self.statPrioMap:

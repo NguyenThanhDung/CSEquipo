@@ -39,8 +39,8 @@ class Guardian:
 
         self.equipmentSets = {}
     
-    def Equip(self, equipment, equipmentType):
-        self.equipments[equipmentType] = equipment
+    def Equip(self, equipment):
+        self.equipments[equipment.type] = equipment
         self.AddEquipmentSet(equipment.set)
 
     def AddEquipmentSet(self, equipmentSet):
