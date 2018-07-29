@@ -1,3 +1,4 @@
+from Defines import EquipmentType
 from Defines import StatisticType
 from Defines import SetType
 from Defines import SpecialAbility
@@ -10,7 +11,7 @@ class Equipment:
         set, starCount, level):
 
         self.id = id
-        self.type = equipmentType
+        self.type = self.EquipmentNameToEquipmentType(equipmentType)
 
         self.statistics = {}
 
@@ -38,6 +39,20 @@ class Equipment:
         self.set = self.SetNameToSetType(set)
         self.starCount = starCount
         self.level = level
+
+    def EquipmentNameToEquipmentType(self, equipmentName):
+        if equipmentName == "Weapon":
+            return EquipmentType.Weapon
+        elif equipmentName == "Armor":
+            return EquipmentType.Armor
+        elif equipmentName == "Shield":
+            return EquipmentType.Shield
+        elif equipmentName == "Gloves":
+            return EquipmentType.Gloves
+        elif equipmentName == "Necklace":
+            return EquipmentType.Necklace
+        elif equipmentName == "Ring":
+            return EquipmentType.Ring
 
     def SetNameToSetType(self, setName):
         if setName == "Strike":

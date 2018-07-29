@@ -15,4 +15,4 @@ class EquipmentSet:
             + str(self.shield.id).rjust(3) + ","         \
             + str(self.gloves.id).rjust(3) + ","         \
             + str(self.necklace.id).rjust(3) + ","       \
-            + str(self.ring.id).rjust(3) + ","
+            + str(self.ring.id).rjust(3) + ")"

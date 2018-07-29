@@ -10,8 +10,7 @@ def main():
     statPrioMap = StatPrioMap("data/stat_prio_map.json")
 
     equipmentSets = equipmentList.GenerateEquipmentSet()
-    for equipmentSet in equipmentSets:
-        print(equipmentSet.ToString())
+    print(str(len(equipmentSets)))
 
 if __name__ == "__main__":
     main()
