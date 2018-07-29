@@ -25,6 +25,12 @@
     <Compile Include="objects\EquipmentList.py" />
     <Compile Include="objects\Guardian.py" />
     <Compile Include="objects\GuardianList.py" />
+    <Compile Include="objects\StatPrio.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="objects\StatPrioMap.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="objects\__init__.py" />
   </ItemGroup>
   <ItemGroup>

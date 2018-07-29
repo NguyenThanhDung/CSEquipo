@@ -1,0 +1,24 @@
+{
+  "StatPrioMap": [
+    {
+      "Guardian": "Lubu",
+      "Stat": "ATK"
+    },
+    {
+      "Guardian": "Edele",
+      "Stat": "HP"
+    },
+    {
+      "Guardian": "Finn",
+      "Stat": "ACC"
+    },
+    {
+      "Guardian": "Sylvia",
+      "Stat": "CRT Rate"
+    },
+    {
+      "Guardian": "Cassandra",
+      "Stat": "DEF"
+    }
+  ]
+}
