@@ -11,10 +11,13 @@ def main():
     statPrioMap = StatPrioMap("data/stat_prio_map.json")
 
     for guardian in guardianList.guardians:
+        print("Find best equipment for " + guardian.name + ":")
+        print("Generate equipment sets")
         equipmentSets = equipmentList.GenerateEquipmentSet()
         maxStatValue = 0
         maxEquipmentSet = None
         for equipmentSet in equipmentSets:
+            print("Try set " + equipmentSet.ToString())
             guardian.Equip(equipmentSet.weapon)
             guardian.Equip(equipmentSet.armor)
             guardian.Equip(equipmentSet.shield)
@@ -23,9 +26,11 @@ def main():
             guardian.Equip(equipmentSet.ring)
             finalStats = guardian.GetFinalStats()
             desireStat = statPrioMap.GetDesireStat(guardian)
+            print("Desire stat value: " + str(finalStats[desireStat]))
             if finalStats[desireStat] > maxStatValue:
                 maxStatValue = finalStats[desireStat]
                 maxEquipmentSet = equipmentSet
+            print("Current best stat: " + str(maxStatValue))
         guardian.Equip(maxEquipmentSet)
         equipmentList.Remove(maxEquipmentSet.weapon)
         equipmentList.Remove(maxEquipmentSet.armor)
@@ -33,6 +38,8 @@ def main():
         equipmentList.Remove(maxEquipmentSet.gloves)
         equipmentList.Remove(maxEquipmentSet.necklace)
         equipmentList.Remove(maxEquipmentSet.ring)
+    print("Final result:")
+    for guardian in guardianList.guardians:
         print(guardian.ToString())
 
 if __name__ == "__main__":
