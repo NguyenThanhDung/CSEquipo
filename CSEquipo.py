@@ -31,7 +31,12 @@ def main():
                 maxStatValue = finalStats[desireStat]
                 maxEquipmentSet = equipmentSet
             print("Current best stat: " + str(maxStatValue))
-        guardian.Equip(maxEquipmentSet)
+        guardian.Equip(maxEquipmentSet.weapon)
+        guardian.Equip(maxEquipmentSet.armor)
+        guardian.Equip(maxEquipmentSet.shield)
+        guardian.Equip(maxEquipmentSet.gloves)
+        guardian.Equip(maxEquipmentSet.necklace)
+        guardian.Equip(maxEquipmentSet.ring)
         equipmentList.Remove(maxEquipmentSet.weapon)
         equipmentList.Remove(maxEquipmentSet.armor)
         equipmentList.Remove(maxEquipmentSet.shield)
