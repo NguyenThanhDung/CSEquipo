@@ -40,8 +40,9 @@ class Guardian:
         self.equipmentSets = {}
     
     def Equip(self, equipment):
-        self.equipments[equipment.type] = equipment
-        self.AddEquipmentSet(equipment.set)
+        if equipment is not None:
+            self.equipments[equipment.type] = equipment
+            self.AddEquipmentSet(equipment.set)
 
     def AddEquipmentSet(self, equipmentSet):
         if self.equipmentSets.has_key(equipmentSet):
@@ -55,7 +56,8 @@ class Guardian:
             finalStats[statisticType] = self.statistics[statisticType]
             finalStats[statisticType] += self.collectionEffects[statisticType]
             for equipmentType in EquipmentType:
-                finalStats[statisticType] += self.equipments[equipmentType].GetBuffedStatistic(statisticType, self)
+                if self.equipments[equipmentType] is not None:
+                    finalStats[statisticType] += self.equipments[equipmentType].GetBuffedStatistic(statisticType, self)
             for key in self.equipmentSets.keys():
                 if self.equipmentSets[key] >= 2:
                     setBuffPercent = Equipment.GetSetBuff(key, self)

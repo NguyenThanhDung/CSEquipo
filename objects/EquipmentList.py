@@ -1,4 +1,4 @@
-import json
+﻿import json
 from Defines import EquipmentType
 from Equipment import Equipment
 from EquipmentSet import EquipmentSet
@@ -26,12 +26,12 @@ class EquipmentList:
                 return equipment
 
     def GenerateEquipmentSet(self):
-        weapons = []
-        armors = []
-        shields = []
-        glovesList = []
-        necklaces = []
-        rings = []
+        weapons = [None]
+        armors = [None]
+        shields = [None]
+        glovesList = [None]
+        necklaces = [None]
+        rings = [None]
         for equipment in self.equipments:
             if equipment.type == EquipmentType.Weapon:
                 weapons.append(equipment)
@@ -57,7 +57,8 @@ class EquipmentList:
         return equipmentSets
 
     def Remove(self, equipment):
-        self.equipments.remove(equipment)
+        if equipment is not None:
+            self.equipments.remove(equipment)
     
     def ToString(self):
         thisString = "EQUIPMENT LIST:\n\n"
