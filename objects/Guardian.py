@@ -36,29 +36,35 @@ class Guardian:
         self.collectionEffects[StatisticType.CrtDmg] = collectionEffectCrtDmg or 0
         self.collectionEffects[StatisticType.Accuracy] = collectionEffectAcc or 0
         self.collectionEffects[StatisticType.Resistance] = collectionEffectRes or 0
-
-        self.equipmentSets = {}
     
     def Equip(self, equipment):
-        self.equipments[equipment.type] = equipment
-        self.AddEquipmentSet(equipment.set)
+        if equipment is not None:
+            self.equipments[equipment.type] = equipment
 
-    def AddEquipmentSet(self, equipmentSet):
-        if self.equipmentSets.has_key(equipmentSet):
-            self.equipmentSets[equipmentSet] += 1
-        else:
-            self.equipmentSets[equipmentSet] = 1
+    def GetSetCount(self):
+        setCount = {}
+        for equipmentType in EquipmentType:
+            if self.equipments[equipmentType] is not None:
+                equipmentSet = self.equipments[equipmentType].set
+                if equipmentSet in setCount:
+                    setCount[equipmentSet] = setCount[equipmentSet] + 1
+                else:
+                    setCount[equipmentSet] = 1
+        return setCount
 
-    def GetFinalStats(self):
+    def CalculateFinalStats(self):
         finalStats = {}
         for statisticType in StatisticType:
             finalStats[statisticType] = self.statistics[statisticType]
             finalStats[statisticType] += self.collectionEffects[statisticType]
             for equipmentType in EquipmentType:
-                finalStats[statisticType] += self.equipments[equipmentType].GetBuffedStatistic(statisticType, self)
-            for key in self.equipmentSets.keys():
-                if self.equipmentSets[key] >= 2:
-                    setBuffPercent = Equipment.GetSetBuff(key, self)
+                if self.equipments[equipmentType] is not None:
+                    finalStats[statisticType] += self.equipments[equipmentType].GetBuffedStatistic(statisticType, self)
+        setCount = self.GetSetCount()
+        for key in setCount.keys():
+            if setCount[key] >= 2:
+                setBuffPercent = Equipment.GetSetBuff(key, self)
+                for statisticType in StatisticType:
                     finalStats[statisticType] += setBuffPercent.get(statisticType, 0)
         return finalStats
 
@@ -90,8 +96,9 @@ class Guardian:
                 thisString += str(self.equipments[equipmentType].GetBuffedStatistic(statisticType, self)).rjust(10)
             thisString += "\n"
         
-        for key in self.equipmentSets.keys():
-            if self.equipmentSets[key] >= 2:
+        setCount = self.GetSetCount()
+        for key in setCount.keys():
+            if setCount[key] >= 2:
                 thisString += "  " + str(key).ljust(16) + " :"
                 setBuffPercent = Equipment.GetSetBuff(key, self)
                 for statisticType in StatisticType:
@@ -100,7 +107,7 @@ class Guardian:
                     thisString += "    " + str(setBuffPercent.get(specialAbility, ""))
                 thisString += "\n"
 
-        finalStats = self.GetFinalStats()
+        finalStats = self.CalculateFinalStats()
         thisString += "  Final Statistic  :"
         for statisticType in StatisticType:
             thisString += str(finalStats[statisticType]).rjust(10)
