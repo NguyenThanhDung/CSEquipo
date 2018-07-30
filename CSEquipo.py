@@ -24,7 +24,7 @@ def main():
             guardian.Equip(equipmentSet.gloves)
             guardian.Equip(equipmentSet.necklace)
             guardian.Equip(equipmentSet.ring)
-            finalStats = guardian.GetFinalStats()
+            finalStats = guardian.CalculateFinalStats()
             desireStat = statPrioMap.GetDesireStat(guardian)
             print("Desire stat value: " + str(finalStats[desireStat]))
             if finalStats[desireStat] > maxStatValue:

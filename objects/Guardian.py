@@ -52,7 +52,7 @@ class Guardian:
                     setCount[equipmentSet] = 1
         return setCount
 
-    def GetFinalStats(self):
+    def CalculateFinalStats(self):
         finalStats = {}
         for statisticType in StatisticType:
             finalStats[statisticType] = self.statistics[statisticType]
@@ -107,7 +107,7 @@ class Guardian:
                     thisString += "    " + str(setBuffPercent.get(specialAbility, ""))
                 thisString += "\n"
 
-        finalStats = self.GetFinalStats()
+        finalStats = self.CalculateFinalStats()
         thisString += "  Final Statistic  :"
         for statisticType in StatisticType:
             thisString += str(finalStats[statisticType]).rjust(10)
