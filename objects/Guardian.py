@@ -44,17 +44,22 @@ class Guardian:
     def UnequipAll(self):
         self.equipments.clear()
 
-    def GetSetCount(self):
+    def GetEquipmentSet(self):
         setCount = {}
         if len(self.equipments) > 0:
             for equipmentType in EquipmentType:
                 if self.equipments.has_key(equipmentType):
                     equipmentSet = self.equipments[equipmentType].set
-                    if equipmentSet in setCount:
+                    if setCount.has_key(equipmentSet):
                         setCount[equipmentSet] = setCount[equipmentSet] + 1
                     else:
                         setCount[equipmentSet] = 1
-        return setCount
+        set = []
+        for key in setCount.keys():
+            while setCount[key] >= 2:
+                set.append(key)
+                setCount[key] = setCount[key] - 2
+        return set
 
     def CalculateFinalStats(self):
         finalStats = {}
@@ -65,12 +70,11 @@ class Guardian:
                 for equipmentType in EquipmentType:
                     if self.equipments.has_key(equipmentType):
                         finalStats[statisticType] += self.equipments[equipmentType].GetBuffedStatistic(statisticType, self)
-        setCount = self.GetSetCount()
-        for key in setCount.keys():
-            if setCount[key] >= 2:
-                setBuffPercent = Equipment.GetSetBuff(key, self)
-                for statisticType in StatisticType:
-                    finalStats[statisticType] += setBuffPercent.get(statisticType, 0)
+        equipmentSet = self.GetEquipmentSet()
+        for set in equipmentSet:
+            setBuffPercent = Equipment.GetSetBuff(set, self)
+            for statisticType in StatisticType:
+                finalStats[statisticType] += setBuffPercent.get(statisticType, 0)
         return finalStats
 
     def ToString(self):
@@ -104,16 +108,15 @@ class Guardian:
                     thisString += str(self.equipments[equipmentType].GetBuffedStatistic(statisticType, self)).rjust(10)
             thisString += "\n"
         
-        setCount = self.GetSetCount()
-        for key in setCount.keys():
-            if setCount[key] >= 2:
-                thisString += "  " + str(key).ljust(16) + " :"
-                setBuffPercent = Equipment.GetSetBuff(key, self)
-                for statisticType in StatisticType:
-                    thisString += str(setBuffPercent.get(statisticType, 0)).rjust(10)
-                for specialAbility in SpecialAbility:
-                    thisString += "    " + str(setBuffPercent.get(specialAbility, ""))
-                thisString += "\n"
+        equipmentSet = self.GetEquipmentSet()
+        for set in equipmentSet:
+            thisString += "  " + str(set).ljust(16) + " :"
+            setBuffPercent = Equipment.GetSetBuff(set, self)
+            for statisticType in StatisticType:
+                thisString += str(setBuffPercent.get(statisticType, 0)).rjust(10)
+            for specialAbility in SpecialAbility:
+                thisString += "    " + str(setBuffPercent.get(specialAbility, ""))
+            thisString += "\n"
 
         finalStats = self.CalculateFinalStats()
         thisString += "  Final Statistic  :"
