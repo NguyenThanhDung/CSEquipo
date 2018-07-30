@@ -19,6 +19,7 @@ def main():
         maxEquipmentSet = None
         for equipmentSet in equipmentSets:
             print("Try set " + equipmentSet.ToString())
+            guardian.UnequipAll()
             guardian.Equip(equipmentSet.weapon)
             guardian.Equip(equipmentSet.armor)
             guardian.Equip(equipmentSet.shield)
@@ -32,6 +33,7 @@ def main():
                 maxStatValue = finalStats[desireStat]
                 maxEquipmentSet = equipmentSet
             print("Current best stat: " + str(maxStatValue))
+        guardian.UnequipAll()
         guardian.Equip(maxEquipmentSet.weapon)
         guardian.Equip(maxEquipmentSet.armor)
         guardian.Equip(maxEquipmentSet.shield)

@@ -41,15 +41,19 @@ class Guardian:
         if equipment is not None:
             self.equipments[equipment.type] = equipment
 
+    def UnequipAll(self):
+        self.equipments.clear()
+
     def GetSetCount(self):
         setCount = {}
-        for equipmentType in EquipmentType:
-            if self.equipments[equipmentType] is not None:
-                equipmentSet = self.equipments[equipmentType].set
-                if equipmentSet in setCount:
-                    setCount[equipmentSet] = setCount[equipmentSet] + 1
-                else:
-                    setCount[equipmentSet] = 1
+        if len(self.equipments) > 0:
+            for equipmentType in EquipmentType:
+                if self.equipments.has_key(equipmentType):
+                    equipmentSet = self.equipments[equipmentType].set
+                    if equipmentSet in setCount:
+                        setCount[equipmentSet] = setCount[equipmentSet] + 1
+                    else:
+                        setCount[equipmentSet] = 1
         return setCount
 
     def CalculateFinalStats(self):
@@ -57,9 +61,10 @@ class Guardian:
         for statisticType in StatisticType:
             finalStats[statisticType] = self.statistics[statisticType]
             finalStats[statisticType] += self.collectionEffects[statisticType]
-            for equipmentType in EquipmentType:
-                if self.equipments[equipmentType] is not None:
-                    finalStats[statisticType] += self.equipments[equipmentType].GetBuffedStatistic(statisticType, self)
+            if len(self.equipments) > 0:
+                for equipmentType in EquipmentType:
+                    if self.equipments.has_key(equipmentType):
+                        finalStats[statisticType] += self.equipments[equipmentType].GetBuffedStatistic(statisticType, self)
         setCount = self.GetSetCount()
         for key in setCount.keys():
             if setCount[key] >= 2:
@@ -93,7 +98,8 @@ class Guardian:
         for equipmentType in EquipmentType:
             thisString += (equipmentType.name + " Buff:").rjust(20)
             for statisticType in StatisticType:
-                thisString += str(self.equipments[equipmentType].GetBuffedStatistic(statisticType, self)).rjust(10)
+                if self.equipments.has_key(equipmentType):
+                    thisString += str(self.equipments[equipmentType].GetBuffedStatistic(statisticType, self)).rjust(10)
             thisString += "\n"
         
         setCount = self.GetSetCount()
