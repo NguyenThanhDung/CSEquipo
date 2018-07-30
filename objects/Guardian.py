@@ -81,6 +81,8 @@ class Guardian:
         for equipmentType in EquipmentType:
             if self.equipments.has_key(equipmentType):
                 thisString += str(self.equipments[equipmentType].id) + " "
+            else:
+                thisString += "0 "
         thisString += "\n"
         
         thisString += "                           ATK       DEF    PINCER        HP   CRTRATE    CRTDMG       ACC       RES\n"
