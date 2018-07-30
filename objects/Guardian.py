@@ -6,7 +6,7 @@ from Equipment import Equipment
 class Guardian:
 
     def __init__(self, id, name, atk, defend, pincerAtk, hp, crtRate, crtDmg, acc, res, collectionEffectAtk, collectionEffectDef, collectionEffectPincerAtk, collectionEffectHp, collectionEffectCrtRate, collectionEffectCrtDmg, collectionEffectAcc, collectionEffectRes):
-        self.id = id
+        self.id = int(id)
         self.name = name
 
         self.equipments = {}

@@ -1,6 +1,7 @@
 {
     "GuardianList": [
         {
+            "ID": "1",
             "Guardian": "Lubu",
             "Weapon": 14,
             "Armor": 15,
@@ -26,6 +27,7 @@
             "Collection Effect RES": null
         },
         {
+            "ID": "2",
             "Guardian": "Edele",
             "Weapon": 20,
             "Armor": 21,
@@ -51,6 +53,7 @@
             "Collection Effect RES": null
         },
         {
+            "ID": "3",
             "Guardian": "Finn",
             "Weapon": 1,
             "Armor": 0,
@@ -76,6 +79,7 @@
             "Collection Effect RES": null
         },
         {
+            "ID": "4",
             "Guardian": "Sylvia",
             "Weapon": 26,
             "Armor": 27,
@@ -101,6 +105,7 @@
             "Collection Effect RES": null
         },
         {
+            "ID": "5",
             "Guardian": "Cassandra",
             "Weapon": 32,
             "Armor": 33,

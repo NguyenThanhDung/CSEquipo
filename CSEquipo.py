@@ -10,42 +10,58 @@ def main():
     guardianList = GuardianList("data/guardians.json")
     statPrioMap = StatPrioMap("data/stat_prio_map.json")
 
-    for guardian in guardianList.guardians:
-        print("Find best equipment for " + guardian.name + ":")
-        print("Generate equipment sets")
-        equipmentSets = equipmentList.GenerateEquipmentSet()
-        maxStatValue = 0
-        maxEquipmentSet = None
-        for equipmentSet in equipmentSets:
-            print("Try set " + equipmentSet.ToString())
-            guardian.Equip(equipmentSet.weapon)
-            guardian.Equip(equipmentSet.armor)
-            guardian.Equip(equipmentSet.shield)
-            guardian.Equip(equipmentSet.gloves)
-            guardian.Equip(equipmentSet.necklace)
-            guardian.Equip(equipmentSet.ring)
-            finalStats = guardian.GetFinalStats()
-            desireStat = statPrioMap.GetDesireStat(guardian)
-            print("Desire stat value: " + str(finalStats[desireStat]))
-            if finalStats[desireStat] > maxStatValue:
-                maxStatValue = finalStats[desireStat]
-                maxEquipmentSet = equipmentSet
-            print("Current best stat: " + str(maxStatValue))
-        guardian.Equip(maxEquipmentSet.weapon)
-        guardian.Equip(maxEquipmentSet.armor)
-        guardian.Equip(maxEquipmentSet.shield)
-        guardian.Equip(maxEquipmentSet.gloves)
-        guardian.Equip(maxEquipmentSet.necklace)
-        guardian.Equip(maxEquipmentSet.ring)
-        equipmentList.Remove(maxEquipmentSet.weapon)
-        equipmentList.Remove(maxEquipmentSet.armor)
-        equipmentList.Remove(maxEquipmentSet.shield)
-        equipmentList.Remove(maxEquipmentSet.gloves)
-        equipmentList.Remove(maxEquipmentSet.necklace)
-        equipmentList.Remove(maxEquipmentSet.ring)
-    print("Final result:")
-    for guardian in guardianList.guardians:
-        print(guardian.ToString())
+    lubu = guardianList.GetGuardianById(1)
+    lubu.Equip(equipmentList.GetEquipmentById(14))
+    lubu.Equip(equipmentList.GetEquipmentById(15))
+    lubu.Equip(equipmentList.GetEquipmentById(16))
+    lubu.Equip(equipmentList.GetEquipmentById(23))
+    lubu.Equip(equipmentList.GetEquipmentById(24))
+    lubu.Equip(equipmentList.GetEquipmentById(5))
+    print(lubu.ToString())
+    lubu.Equip(equipmentList.GetEquipmentById(20))
+    lubu.Equip(equipmentList.GetEquipmentById(4))
+    lubu.Equip(equipmentList.GetEquipmentById(34))
+    lubu.Equip(equipmentList.GetEquipmentById(35))
+    lubu.Equip(equipmentList.GetEquipmentById(3))
+    lubu.Equip(equipmentList.GetEquipmentById(38))
+    print(lubu.ToString())
+
+    #for guardian in guardianList.guardians:
+    #    print("Find best equipment for " + guardian.name + ":")
+    #    print("Generate equipment sets")
+    #    equipmentSets = equipmentList.GenerateEquipmentSet()
+    #    maxStatValue = 0
+    #    maxEquipmentSet = None
+    #    for equipmentSet in equipmentSets:
+    #        print("Try set " + equipmentSet.ToString())
+    #        guardian.Equip(equipmentSet.weapon)
+    #        guardian.Equip(equipmentSet.armor)
+    #        guardian.Equip(equipmentSet.shield)
+    #        guardian.Equip(equipmentSet.gloves)
+    #        guardian.Equip(equipmentSet.necklace)
+    #        guardian.Equip(equipmentSet.ring)
+    #        finalStats = guardian.GetFinalStats()
+    #        desireStat = statPrioMap.GetDesireStat(guardian)
+    #        print("Desire stat value: " + str(finalStats[desireStat]))
+    #        if finalStats[desireStat] > maxStatValue:
+    #            maxStatValue = finalStats[desireStat]
+    #            maxEquipmentSet = equipmentSet
+    #        print("Current best stat: " + str(maxStatValue))
+    #    guardian.Equip(maxEquipmentSet.weapon)
+    #    guardian.Equip(maxEquipmentSet.armor)
+    #    guardian.Equip(maxEquipmentSet.shield)
+    #    guardian.Equip(maxEquipmentSet.gloves)
+    #    guardian.Equip(maxEquipmentSet.necklace)
+    #    guardian.Equip(maxEquipmentSet.ring)
+    #    equipmentList.Remove(maxEquipmentSet.weapon)
+    #    equipmentList.Remove(maxEquipmentSet.armor)
+    #    equipmentList.Remove(maxEquipmentSet.shield)
+    #    equipmentList.Remove(maxEquipmentSet.gloves)
+    #    equipmentList.Remove(maxEquipmentSet.necklace)
+    #    equipmentList.Remove(maxEquipmentSet.ring)
+    #print("Final result:")
+    #for guardian in guardianList.guardians:
+    #    print(guardian.ToString())
 
 if __name__ == "__main__":
     main()
