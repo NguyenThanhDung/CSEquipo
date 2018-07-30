@@ -10,7 +10,8 @@ def main():
     guardianList = GuardianList("data/guardians.json")
     statPrioMap = StatPrioMap("data/stat_prio_map.json")
 
-    for guardian in guardianList.guardians:
+    for statPrio in statPrioMap.statPrioMap:
+        guardian = guardianList.GetGuardianById(statPrio.guardianID)
         print("Find best equipment for " + guardian.name + ":")
         print("Generate equipment sets")
         equipmentSets = equipmentList.GenerateEquipmentSet()
