@@ -77,6 +77,13 @@ class Guardian:
                 finalStats[statisticType] += setBuffPercent.get(statisticType, 0)
         return finalStats
 
+    @staticmethod
+    def GetAverageAttack(finalStats):
+        atk = finalStats[StatisticType.Attack]
+        crtRate = finalStats[StatisticType.CrtRate]
+        crtDmg = finalStats[StatisticType.CrtDmg]
+        return atk + crtRate * (atk + crtDmg) / 100
+
     def ToString(self):
         thisString = "Guardian #" + str(self.id) + "\n"
         thisString += "  Name             : " + str(self.name) + "\n"
@@ -122,5 +129,8 @@ class Guardian:
         thisString += "  Final Statistic  :"
         for statisticType in StatisticType:
             thisString += str(finalStats[statisticType]).rjust(10)
+        thisString += "\n"
+
+        thisString += "  Average ATK      : " + str(Guardian.GetAverageAttack(finalStats))
 
         return thisString

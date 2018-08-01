@@ -1,4 +1,5 @@
 from objects.Defines import EquipmentType
+from objects.Defines import StatisticType
 from objects.EquipmentList import EquipmentList
 from objects.GuardianList import GuardianList
 from objects.StatPrioMap import StatPrioMap
@@ -28,10 +29,17 @@ def main():
             guardian.Equip(equipmentSet.ring)
             finalStats = guardian.CalculateFinalStats()
             desireStat = statPrioMap.GetDesireStat(guardian)
-            print("Desire stat value: " + str(finalStats[desireStat]))
-            if finalStats[desireStat] > maxStatValue:
-                maxStatValue = finalStats[desireStat]
-                maxEquipmentSet = equipmentSet
+            if desireStat == StatisticType.Attack:
+                averageAttack = Guardian.GetAverageAttack(finalStats)
+                print("Desire stat value: " + str(averageAttack))
+                if averageAttack > maxStatValue:
+                    maxStatValue = averageAttack
+                    maxEquipmentSet = equipmentSet
+            else:
+                print("Desire stat value: " + str(finalStats[desireStat]))
+                if finalStats[desireStat] > maxStatValue:
+                    maxStatValue = finalStats[desireStat]
+                    maxEquipmentSet = equipmentSet
             print("Current best stat: " + str(maxStatValue))
         guardian.UnequipAll()
         guardian.Equip(maxEquipmentSet.weapon)
