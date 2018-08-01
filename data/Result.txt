@@ -1,0 +1,80 @@
+Final result:
+Guardian #1
+  Name             : Lubu
+  Equipment IDs    : 2 12 25 28 33 43
+                           ATK       DEF    PINCER        HP   CRTRATE    CRTDMG       ACC       RES
+  Base Statistic   :      1408       774       880      8241        15        50         0         0
+  Collection Effect:         0         0         0         0         0         0         0         0
+        Weapon Buff:       746         0        96       247         0         0        10        10
+         Armor Buff:       183        38        44      4367         8         0         0         7
+        Shield Buff:         0       270        52         0         9         0         3         4
+        Gloves Buff:       422        17       308         0         6         0         0         0
+      Necklace Buff:       168        61        44      1153        36         0         0         0
+          Ring Buff:       112         0        79         0         4         8         0        24
+  SetType.Endure   :         0         0         0         0         0         0         0        15
+  Final Statistic  :      3039      1160      1503     14008        78        58        13        60
+  Average ATK      : 5454
+Guardian #2
+  Name             : Edele
+  Equipment IDs    : 7 13 21 29 34 44
+                           ATK       DEF    PINCER        HP   CRTRATE    CRTDMG       ACC       RES
+  Base Statistic   :      1015       687       716      8124        15        50         0         0
+  Collection Effect:         0         0         0        15         0         0         0         0
+        Weapon Buff:       355         0        10      1868         0         0         3         4
+         Armor Buff:        15         0         0      4062         5         4         9         7
+        Shield Buff:         0       240        17       649         2         3         3         0
+        Gloves Buff:         0         0       250       988         0         8         0         0
+      Necklace Buff:         0       364        42      1218         5         6         0         0
+          Ring Buff:       111         0         0       786         0         6         0        24
+  SetType.Energy   :         0         0         0     812.4         0         0         0         0
+  SpecialAbility.CounterAttack :         0         0         0         0         0         0         0         0
+  Final Statistic  :      1496      1291      1035   18522.4        27        77        15        35
+  Average ATK      : 1920
+Guardian #3
+  Name             : Finn
+  Equipment IDs    : 10 18 24 30 35 41
+                           ATK       DEF    PINCER        HP   CRTRATE    CRTDMG       ACC       RES
+  Base Statistic   :      1254       627       776      7079        15        50         0         0
+  Collection Effect:         0         0        15         0         0         0         0         0
+        Weapon Buff:       438         0         0       637        11         4         0         0
+         Armor Buff:         0         0        69      2477         4         0         0        10
+        Shield Buff:         0       219         0       424         3         0         0         9
+        Gloves Buff:         0         0       271       283         0         9         0        11
+      Necklace Buff:       322         0       156         0         0         3         0         3
+          Ring Buff:         0         0       104      1132         3         0         0        33
+  SetType.Blade    :         0         0         0         0         8         0         0         0
+  Final Statistic  :      2014       846      1391     12032        44        66         0        66
+  Average ATK      : 2929
+Guardian #4
+  Name             : Hades
+  Equipment IDs    : 1 14 23 27 39 42
+                           ATK       DEF    PINCER        HP   CRTRATE    CRTDMG       ACC       RES
+  Base Statistic   :      1583       688       791      7228        15        50         0         0
+  Collection Effect:         0         0         0         0         0         0         0         0
+        Weapon Buff:       601         0         0         0        10         0         4         8
+         Armor Buff:        94        33        23      3397         0         0         7         0
+        Shield Buff:         0       240        39         0         7         5         0        10
+        Gloves Buff:        40         0       276       361         0         0         6         0
+      Necklace Buff:       237        48         0         0        24         0         4         0
+          Ring Buff:         0       103        79         0         4         9         0        33
+  SetType.Strike   :     158.3         0         0         0         0         0         0         0
+  SetType.Pincer   :         0         0      79.1         0         0         0         0         0
+  Final Statistic  :    2713.3      1112    1287.1     10986        60        64        21        51
+  Average ATK      : 4379.68
+Guardian #5
+  Name             : Langmar
+  Equipment IDs    : 9 11 22 31 40 45
+                           ATK       DEF    PINCER        HP   CRTRATE    CRTDMG       ACC       RES
+  Base Statistic   :       534       571       442      4700        15        50         0         0
+  Collection Effect:         0        20         0         0         0         0         0         0
+        Weapon Buff:       186         0        30         0         2         5        10         0
+         Armor Buff:         0         0         8      2209         7         0        13         5
+        Shield Buff:         0       199        30         0         2         7         8         0
+        Gloves Buff:        48         0       154         0         0         0         4         8
+      Necklace Buff:        48         0         0       188        24         0        11         0
+          Ring Buff:         0         0        53       909         0         4         2         4
+  SetType.Focus    :         0         0         0         0         0         0        15         0
+  SetType.Focus    :         0         0         0         0         0         0        15         0
+  Final Statistic  :       816       790       717      8006        50        66        78        17
+  Average ATK      : 1257
+Press any key to continue . . .
