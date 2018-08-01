@@ -1,24 +1,29 @@
 {
   "StatPrioMap": [
     {
-      "Guardian": "Lubu",
+      "Guardian ID": 1,
+      "Prio": 1,
       "Stat": "ATK"
     },
     {
-      "Guardian": "Edele",
+      "Guardian ID": 2,
+      "Prio": 2,
       "Stat": "HP"
     },
     {
-      "Guardian": "Finn",
+      "Guardian ID": 3,
+      "Prio": 5,
+      "Stat": "ATK"
+    },
+    {
+      "Guardian ID": 4,
+      "Prio": 4,
+      "Stat": "ATK"
+    },
+    {
+      "Guardian ID": 5,
+      "Prio": 3,
       "Stat": "ACC"
-    },
-    {
-      "Guardian": "Sylvia",
-      "Stat": "CRT Rate"
-    },
-    {
-      "Guardian": "Cassandra",
-      "Stat": "DEF"
     }
   ]
 }
