@@ -86,9 +86,9 @@ class Guardian:
 
     def ToString(self):
         thisString = "Guardian #" + str(self.id) + "\n"
-        thisString += "  Name             : " + str(self.name) + "\n"
+        thisString += self.GetAlignedText(2, "Name", True, ":") + str(self.name) + "\n"
 
-        thisString += "  Equipment IDs    : "
+        thisString += self.GetAlignedText(2, "Equipment IDs", True, ":")
         for equipmentType in EquipmentType:
             if self.equipments.has_key(equipmentType):
                 thisString += str(self.equipments[equipmentType].id) + " "
@@ -96,20 +96,20 @@ class Guardian:
                 thisString += "0 "
         thisString += "\n"
         
-        thisString += "                           ATK       DEF    PINCER        HP   CRTRATE    CRTDMG       ACC       RES\n"
+        thisString += self.GetAlignedText(2, " ", True, " ") + "       ATK       DEF    PINCER        HP   CRTRATE    CRTDMG       ACC       RES\n"
 
-        thisString += "  Base Statistic   :" 
+        thisString += self.GetAlignedText(2, "Base Statistic", True, ":")
         for statisticType in StatisticType:
             thisString += str(self.statistics[statisticType]).rjust(10)
         thisString += "\n"
 
-        thisString += "  Collection Effect:"
+        thisString += self.GetAlignedText(2, "Collection Effect", True, ":")
         for statisticType in StatisticType:
             thisString += str(self.collectionEffects[statisticType]).rjust(10)
         thisString += "\n"
 
         for equipmentType in EquipmentType:
-            thisString += (equipmentType.name + " Buff:").rjust(20)
+            thisString += self.GetAlignedText(2, equipmentType.name + " Buff ", False, ":")
             for statisticType in StatisticType:
                 if self.equipments.has_key(equipmentType):
                     thisString += str(self.equipments[equipmentType].GetBuffedStatistic(statisticType, self)).rjust(10)
@@ -117,7 +117,7 @@ class Guardian:
         
         equipmentSet = self.GetEquipmentSet()
         for set in equipmentSet:
-            thisString += "  " + str(set).ljust(16) + " :"
+            thisString += self.GetAlignedText(2, str(set), True, ":")
             setBuffPercent = Equipment.GetSetBuff(set, self)
             for statisticType in StatisticType:
                 thisString += str(setBuffPercent.get(statisticType, 0)).rjust(10)
@@ -126,11 +126,23 @@ class Guardian:
             thisString += "\n"
 
         finalStats = self.CalculateFinalStats()
-        thisString += "  Final Statistic  :"
+        thisString += self.GetAlignedText(2, "Final Statistic", True, ":")
         for statisticType in StatisticType:
             thisString += str(finalStats[statisticType]).rjust(10)
         thisString += "\n"
 
-        thisString += "  Average ATK      : " + str(Guardian.GetAverageAttack(finalStats))
+        thisString += self.GetAlignedText(2, "Average ATK", True, ":") + str(Guardian.GetAverageAttack(finalStats)).rjust(10)
 
         return thisString
+
+    def GetAlignedText(self, indent, text, alignLeft = True, suffixText = ""):
+        width = 33
+        alignedText = ""
+        for i in range(indent):
+            alignedText += " "
+        if alignLeft:
+            alignedText += text.ljust(width)
+        else:
+            alignedText += text.rjust(width)
+        alignedText += suffixText
+        return alignedText
