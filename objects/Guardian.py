@@ -86,9 +86,9 @@ class Guardian:
 
     def ToString(self):
         thisString = "Guardian #" + str(self.id) + "\n"
-        thisString += self.GetAlignedText(2, "Name", True, ":") + str(self.name) + "\n"
+        thisString += self.GetAlignedText(2, "Name", True, ": ") + str(self.name) + "\n"
 
-        thisString += self.GetAlignedText(2, "Equipment IDs", True, ":")
+        thisString += self.GetAlignedText(2, "Equipment IDs", True, ": ")
         for equipmentType in EquipmentType:
             if self.equipments.has_key(equipmentType):
                 thisString += str(self.equipments[equipmentType].id) + " "
@@ -109,7 +109,7 @@ class Guardian:
         thisString += "\n"
 
         for equipmentType in EquipmentType:
-            thisString += self.GetAlignedText(2, equipmentType.name + " Buff ", False, ":")
+            thisString += self.GetAlignedText(4, equipmentType.name + " Buff ", True, ":")
             for statisticType in StatisticType:
                 if self.equipments.has_key(equipmentType):
                     thisString += str(self.equipments[equipmentType].GetBuffedStatistic(statisticType, self)).rjust(10)
@@ -141,8 +141,8 @@ class Guardian:
         for i in range(indent):
             alignedText += " "
         if alignLeft:
-            alignedText += text.ljust(width)
+            alignedText += text.ljust(width - indent)
         else:
-            alignedText += text.rjust(width)
+            alignedText += text.rjust(width - indent)
         alignedText += suffixText
         return alignedText
