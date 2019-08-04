@@ -82,7 +82,7 @@ class Guardian:
         atk = finalStats[StatisticType.Attack]
         crtRate = finalStats[StatisticType.CrtRate]
         crtDmg = finalStats[StatisticType.CrtDmg]
-        return atk + crtRate * (atk + crtDmg) / 100
+        return atk * (1 + crtRate * crtDmg * 0.0001)
 
     def ToString(self):
         thisString = "Guardian #" + str(self.id) + "\n"
