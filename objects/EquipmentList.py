@@ -1,7 +1,7 @@
 import json
-from Defines import EquipmentType
-from Equipment import Equipment
-from EquipmentSet import EquipmentSet
+from objects.Defines import EquipmentType
+from objects.Equipment import Equipment
+from objects.EquipmentSet import EquipmentSet
 
 class EquipmentList:
 

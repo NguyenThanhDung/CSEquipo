@@ -1,7 +1,7 @@
-from Defines import EquipmentType
-from Defines import StatisticType
-from Defines import SpecialAbility
-from Equipment import Equipment
+from objects.Defines import EquipmentType
+from objects.Defines import StatisticType
+from objects.Defines import SpecialAbility
+from objects.Equipment import Equipment
 
 class Guardian:
 

@@ -1,8 +1,8 @@
-from Defines import EquipmentType
-from Defines import StatisticType
-from Defines import SetType
-from Defines import SpecialAbility
-from Defines import ValueType
+from objects.Defines import EquipmentType
+from objects.Defines import StatisticType
+from objects.Defines import SetType
+from objects.Defines import SpecialAbility
+from objects.Defines import ValueType
 
 class Equipment:
 

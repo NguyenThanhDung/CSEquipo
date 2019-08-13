@@ -1,5 +1,12 @@
 from enum import Enum
 
+class GuardianDirection(Enum):
+    Rook = 0
+    Knight = 1
+    Bishop = 2
+    Queen = 3
+    King = 4
+
 class EquipmentType(Enum):
     Weapon = 0
     Armor = 1

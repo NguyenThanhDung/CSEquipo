@@ -1,6 +1,6 @@
 import json
 import os
-from StatPrio import StatPrio
+from objects.StatPrio import StatPrio
 
 class StatPrioMap:
 

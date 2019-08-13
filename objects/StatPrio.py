@@ -1,4 +1,4 @@
-from Defines import StatisticType
+from objects.Defines import StatisticType
 
 class StatPrio:
 

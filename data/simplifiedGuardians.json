@@ -1,0 +1,37 @@
+{
+    "GuardianList": [
+        {
+            "ID": 45,
+            "Name": "Mua",
+            "Direction": "R",
+            "Base stars": 5,
+            "Current stars": 6,
+            "Level": 50,
+            "Status": "Using",
+            "Prior Statistic": "HP",
+            "Note": ""
+        },
+        {
+            "ID": 88,
+            "Name": "Stein",
+            "Direction": "K",
+            "Base stars": 5,
+            "Current stars": 6,
+            "Level": 50,
+            "Status": "Using",
+            "Prior Statistic": "ACC",
+            "Note": ""
+        },
+        {
+            "ID": 97,
+            "Name": "Dia",
+            "Direction": "K",
+            "Base stars": 5,
+            "Current stars": 6,
+            "Level": 40,
+            "Status": "Using",
+            "Prior Statistic": "ATK",
+            "Note": "Trensend > Train to 45 > Trensend > Train to 50"
+        }
+    ]
+}
