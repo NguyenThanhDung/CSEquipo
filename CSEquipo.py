@@ -5,6 +5,7 @@ from objects.GuardianList import GuardianList
 from objects.StatPrioMap import StatPrioMap
 from objects.EquipmentSet import EquipmentSet
 from objects.Guardian import Guardian
+from objects.Optimizer import Optimizer
 
 
 def Optimize1(guardianList, equipmentList):
@@ -53,63 +54,11 @@ def Optimize1(guardianList, equipmentList):
     return None
 
 
-def GetEquipmentsByType(equipments):
-    indexes = {}
-    indexes[EquipmentType.Weapon] = []
-    indexes[EquipmentType.Armor] = []
-    indexes[EquipmentType.Shield] = []
-    indexes[EquipmentType.Gloves] = []
-    indexes[EquipmentType.Necklace] = []
-    indexes[EquipmentType.Ring] = []
-    for equipment in equipments:
-        equipmentType = equipment.type
-        indexes[equipmentType].append(equipment)
-    return indexes
-
-
-def GetCombinedStatisticValue(priorityStatistic, equipmentSet):
-    # TODO: Implement
-    return None
-
-
-def FindBestEquipmentSet(equipmentsWithType, priorityStatistic):
-    maxStatisticValue = 0
-    bestEquipmentSet = None
-    for weapon in equipmentsWithType[EquipmentType.Weapon]:
-        for armor in equipmentsWithType[EquipmentType.Armor]:
-            for shield in equipmentsWithType[EquipmentType.Shield]:
-                for gloves in equipmentsWithType[EquipmentType.Gloves]:
-                    for necklace in equipmentsWithType[EquipmentType.Necklace]:
-                        for ring in equipmentsWithType[EquipmentType.Ring]:
-                            currentEquipmentSet = [weapon, armor, shield, gloves, necklace, ring]
-                            currentStatisticValue = GetCombinedStatisticValue(priorityStatistic, currentEquipmentSet)
-                            if maxStatisticValue < currentStatisticValue:
-                                print("Found max set of " + priorityStatistic + " with value " + str(currentStatisticValue))
-                                maxStatisticValue = currentStatisticValue
-                                bestEquipmentSet = currentEquipmentSet
-    return bestEquipmentSet
-
-
-def RemoveEquipmentSet(equipmentsWithType, equipmentSet):
-    for equipmentType in EquipmentType:
-        equipmentsWithType[equipmentType].remove(equipmentSet[equipmentType])
-    return None
-
-
-def Optimize2(guardians, equipments):
-    equipmentsWithType = GetEquipmentsByType(equipments)
-    for guardian in guardians:
-        print("Finding best equipment set for #" + guardian.id + " " + guardian.name)
-        bestEquipmentSet = FindBestEquipmentSet(equipmentsWithType, guardian.priorityStatistic)
-        guardian.Equipment(bestEquipmentSet)
-        equipmentsWithType = RemoveEquipmentSet(equipmentsWithType, bestEquipmentSet)
-    return None
-
-
 def main():
     equipmentList = EquipmentList("data/equipments.json")
     guardianList = GuardianList("data/simplifiedGuardians.json", True)
-    Optimize2(guardianList.guardians, equipmentList.equipments)
+    optimizer = Optimizer()
+    optimizedGuardians = optimizer.Optimize(guardianList.guardians, equipmentList.equipments)
     return None
 
 if __name__ == "__main__":
