@@ -52,15 +52,39 @@ def Optimize1(guardianList, equipmentList):
         equipmentList.Remove(maxEquipmentSet.ring)
     return None
 
-def Optimize2(guardianList, equipmentList):
+
+def GetEquipmentsByType(equipments):
+    indexes = {}
+    indexes[EquipmentType.Weapon] = []
+    indexes[EquipmentType.Armor] = []
+    indexes[EquipmentType.Shield] = []
+    indexes[EquipmentType.Gloves] = []
+    indexes[EquipmentType.Necklace] = []
+    indexes[EquipmentType.Ring] = []
+    for equipment in equipments:
+        equipmentType = equipment.type
+        indexes[equipmentType].append(equipment)
+    return indexes
+
+
+def Optimize2(guardians, equipments):
+    equipmentsWithType = GetEquipmentsByType(equipments)
+    for guardian in guardians:
+        print("Finding best equipment set for #" + guardian.id + " " + guardian.name)
+        bestEquipmentSet = FindBestEquipmentSet(equipmentsWithType, guardian.priorityStatistic)
+        guardian.Equipment(bestEquipmentSet)
+        equipmentsWithType = RemoveEquipmentSet(equipmentsWithType, bestEquipmentSet)
     return None
 
 
 def main():
     equipmentList = EquipmentList("data/equipments.json")
     guardianList = GuardianList("data/simplifiedGuardians.json", True)
-    for guardian in guardianList.guardians:
-        print(guardian.ToString())
+    equipmentsByType = GetEquipmentsByType(equipmentList.equipments)
+    for equipmentType in EquipmentType:
+        equipmentsOfThisType = equipmentsByType[equipmentType]
+        for equipment in equipmentsOfThisType:
+            print(str(equipment.id) + " " + str(equipment.type))
 
 if __name__ == "__main__":
     main()
