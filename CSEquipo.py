@@ -67,6 +67,29 @@ def GetEquipmentsByType(equipments):
     return indexes
 
 
+def GetCombinedStatisticValue(priorityStatistic, equipmentSet):
+    # TODO: Implement
+    return None
+
+
+def FindBestEquipmentSet(equipmentsWithType, priorityStatistic):
+    maxStatisticValue = 0
+    bestEquipmentSet = None
+    for weapon in equipmentsWithType[EquipmentType.Weapon]:
+        for armor in equipmentsWithType[EquipmentType.Armor]:
+            for shield in equipmentsWithType[EquipmentType.Shield]:
+                for gloves in equipmentsWithType[EquipmentType.Gloves]:
+                    for necklace in equipmentsWithType[EquipmentType.Necklace]:
+                        for ring in equipmentsWithType[EquipmentType.Ring]:
+                            currentEquipmentSet = [weapon, armor, shield, gloves, necklace, ring]
+                            currentStatisticValue = GetCombinedStatisticValue(priorityStatistic, currentEquipmentSet)
+                            if maxStatisticValue < currentStatisticValue:
+                                print("Found max set of " + priorityStatistic + " with value " + str(currentStatisticValue))
+                                maxStatisticValue = currentStatisticValue
+                                bestEquipmentSet = currentEquipmentSet
+    return bestEquipmentSet
+
+
 def RemoveEquipmentSet(equipmentsWithType, equipmentSet):
     for equipmentType in EquipmentType:
         equipmentsWithType[equipmentType].remove(equipmentSet[equipmentType])
@@ -86,25 +109,7 @@ def Optimize2(guardians, equipments):
 def main():
     equipmentList = EquipmentList("data/equipments.json")
     guardianList = GuardianList("data/simplifiedGuardians.json", True)
-
-    equipmentsByType = GetEquipmentsByType(equipmentList.equipments)
-
-    for equipmentType in EquipmentType:
-        equipmentsOfThisType = equipmentsByType[equipmentType]
-        for equipment in equipmentsOfThisType:
-            print(str(equipment.id) + " " + str(equipment.type))
-
-    equipmentSet = {}
-    for equipmentType in EquipmentType:
-        equipmentSet[equipmentType] = equipmentsByType[equipmentType][0]
-
-    RemoveEquipmentSet(equipmentsByType, equipmentSet)
-
-    for equipmentType in EquipmentType:
-        equipmentsOfThisType = equipmentsByType[equipmentType]
-        for equipment in equipmentsOfThisType:
-            print(str(equipment.id) + " " + str(equipment.type))
-
+    Optimize2(guardianList.guardians, equipmentList.equipments)
     return None
 
 if __name__ == "__main__":

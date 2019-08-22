@@ -15,13 +15,20 @@ class SimplifiedGuardian:
         self.priorityStatistic = priorityStatistic
         self.note = note
         self.equipments = {
-            EquipmentType.Weapon: 0,
-            EquipmentType.Armor: 0,
-            EquipmentType.Shield: 0,
-            EquipmentType.Gloves: 0,
-            EquipmentType.Necklace: 0,
-            EquipmentType.Ring: 0
+            EquipmentType.Weapon: None,
+            EquipmentType.Armor: None,
+            EquipmentType.Shield: None,
+            EquipmentType.Gloves: None,
+            EquipmentType.Necklace: None,
+            EquipmentType.Ring: None
         }
+    
+    def Equipment(self, equipmentSet):
+        log = "Equip "
+        for equipmentType in EquipmentType:
+            self.equipments[equipmentType] = equipmentSet[equipmentType]
+            log += str(self.equipments[equipmentType].id) + " "
+        print(log)
 
     def ToString(self):
         text = "Guardian #" + str(self.id) + ": " + str(self.name).ljust(10) + "| "
