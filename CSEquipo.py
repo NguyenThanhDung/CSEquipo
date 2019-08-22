@@ -67,6 +67,12 @@ def GetEquipmentsByType(equipments):
     return indexes
 
 
+def RemoveEquipmentSet(equipmentsWithType, equipmentSet):
+    for equipmentType in EquipmentType:
+        equipmentsWithType[equipmentType].remove(equipmentSet[equipmentType])
+    return None
+
+
 def Optimize2(guardians, equipments):
     equipmentsWithType = GetEquipmentsByType(equipments)
     for guardian in guardians:
@@ -80,11 +86,26 @@ def Optimize2(guardians, equipments):
 def main():
     equipmentList = EquipmentList("data/equipments.json")
     guardianList = GuardianList("data/simplifiedGuardians.json", True)
+
     equipmentsByType = GetEquipmentsByType(equipmentList.equipments)
+
     for equipmentType in EquipmentType:
         equipmentsOfThisType = equipmentsByType[equipmentType]
         for equipment in equipmentsOfThisType:
             print(str(equipment.id) + " " + str(equipment.type))
+
+    equipmentSet = {}
+    for equipmentType in EquipmentType:
+        equipmentSet[equipmentType] = equipmentsByType[equipmentType][0]
+
+    RemoveEquipmentSet(equipmentsByType, equipmentSet)
+
+    for equipmentType in EquipmentType:
+        equipmentsOfThisType = equipmentsByType[equipmentType]
+        for equipment in equipmentsOfThisType:
+            print(str(equipment.id) + " " + str(equipment.type))
+
+    return None
 
 if __name__ == "__main__":
     main()
