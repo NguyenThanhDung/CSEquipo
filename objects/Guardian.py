@@ -3,9 +3,13 @@ from objects.Defines import StatisticType
 from objects.Defines import SpecialAbility
 from objects.Equipment import Equipment
 
-class Guardian:
 
-    def __init__(self, id, name, atk, defend, pincerAtk, hp, crtRate, crtDmg, acc, res, collectionEffectAtk, collectionEffectDef, collectionEffectPincerAtk, collectionEffectHp, collectionEffectCrtRate, collectionEffectCrtDmg, collectionEffectAcc, collectionEffectRes):
+class Guardian:
+    def __init__(self, id, name, atk, defend, pincerAtk, hp, crtRate, crtDmg,
+                 acc, res, collectionEffectAtk, collectionEffectDef,
+                 collectionEffectPincerAtk, collectionEffectHp,
+                 collectionEffectCrtRate, collectionEffectCrtDmg,
+                 collectionEffectAcc, collectionEffectRes):
         self.id = int(id)
         self.name = name
 
@@ -17,90 +21,122 @@ class Guardian:
         self.equipments[EquipmentType.Necklace] = None
         self.equipments[EquipmentType.Ring] = None
 
-        self.statistics = {}
-        self.statistics[StatisticType.Attack] = atk
-        self.statistics[StatisticType.Defend] = defend
-        self.statistics[StatisticType.PincerAttack] = pincerAtk
-        self.statistics[StatisticType.HP] = hp
-        self.statistics[StatisticType.CrtRate] = crtRate
-        self.statistics[StatisticType.CrtDmg] = crtDmg
-        self.statistics[StatisticType.Accuracy] = acc
-        self.statistics[StatisticType.Resistance] = res
+        self.baseStatistics = {}
+        self.baseStatistics[StatisticType.Attack] = atk
+        self.baseStatistics[StatisticType.Defend] = defend
+        self.baseStatistics[StatisticType.PincerAttack] = pincerAtk
+        self.baseStatistics[StatisticType.HP] = hp
+        self.baseStatistics[StatisticType.CrtRate] = crtRate
+        self.baseStatistics[StatisticType.CrtDmg] = crtDmg
+        self.baseStatistics[StatisticType.Accuracy] = acc
+        self.baseStatistics[StatisticType.Resistance] = res
 
         self.collectionEffects = {}
         self.collectionEffects[StatisticType.Attack] = collectionEffectAtk or 0
         self.collectionEffects[StatisticType.Defend] = collectionEffectDef or 0
-        self.collectionEffects[StatisticType.PincerAttack] = collectionEffectPincerAtk or 0
+        self.collectionEffects[
+            StatisticType.PincerAttack] = collectionEffectPincerAtk or 0
         self.collectionEffects[StatisticType.HP] = collectionEffectHp or 0
-        self.collectionEffects[StatisticType.CrtRate] = collectionEffectCrtRate or 0
-        self.collectionEffects[StatisticType.CrtDmg] = collectionEffectCrtDmg or 0
-        self.collectionEffects[StatisticType.Accuracy] = collectionEffectAcc or 0
-        self.collectionEffects[StatisticType.Resistance] = collectionEffectRes or 0
-    
-    def Equip(self, equipment):
-        if equipment is not None:
+        self.collectionEffects[
+            StatisticType.CrtRate] = collectionEffectCrtRate or 0
+        self.collectionEffects[
+            StatisticType.CrtDmg] = collectionEffectCrtDmg or 0
+        self.collectionEffects[
+            StatisticType.Accuracy] = collectionEffectAcc or 0
+        self.collectionEffects[
+            StatisticType.Resistance] = collectionEffectRes or 0
+
+        self.finalStatistics = {}
+        self.finalStatistics[StatisticType.Attack] = 0
+        self.finalStatistics[StatisticType.Defend] = 0
+        self.finalStatistics[StatisticType.PincerAttack] = 0
+        self.finalStatistics[StatisticType.HP] = 0
+        self.finalStatistics[StatisticType.CrtRate] = 0
+        self.finalStatistics[StatisticType.CrtDmg] = 0
+        self.finalStatistics[StatisticType.Accuracy] = 0
+        self.finalStatistics[StatisticType.Resistance] = 0
+
+        # TODO: Get value from json
+        self.priorityStatisticType = StatisticType.HP
+
+    def Equip(self, equipments):
+        for equipment in equipments:
             self.equipments[equipment.type] = equipment
+        self.CalculateFinalStats()
 
     def UnequipAll(self):
         self.equipments.clear()
+
+    def GetEquipments(self):
+        return self.equipments
 
     def GetEquipmentSet(self):
         setCount = {}
         if len(self.equipments) > 0:
             for equipmentType in EquipmentType:
-                if self.equipments.has_key(equipmentType):
+                if equipmentType in self.equipments:
                     equipmentSet = self.equipments[equipmentType].set
-                    if setCount.has_key(equipmentSet):
+                    if equipmentSet in setCount:
                         setCount[equipmentSet] = setCount[equipmentSet] + 1
                     else:
                         setCount[equipmentSet] = 1
-        set = []
+        sets = []
         for key in setCount.keys():
             while setCount[key] >= 2:
-                set.append(key)
+                sets.append(key)
                 setCount[key] = setCount[key] - 2
-        return set
+        return sets
 
     def CalculateFinalStats(self):
-        finalStats = {}
         for statisticType in StatisticType:
-            finalStats[statisticType] = self.statistics[statisticType]
-            finalStats[statisticType] += self.collectionEffects[statisticType]
-            if len(self.equipments) > 0:
-                for equipmentType in EquipmentType:
-                    if self.equipments.has_key(equipmentType):
-                        finalStats[statisticType] += self.equipments[equipmentType].GetBuffedStatistic(statisticType, self)
-        equipmentSet = self.GetEquipmentSet()
-        for set in equipmentSet:
-            setBuffPercent = Equipment.GetSetBuff(set, self)
+            self.finalStatistics[statisticType] = self.baseStatistics[
+                statisticType]
+            self.finalStatistics[statisticType] += self.collectionEffects[
+                statisticType]
+            for equipmentType in EquipmentType:
+                if self.equipments[equipmentType] != None:
+                    self.finalStatistics[statisticType] += self.equipments[
+                        equipmentType].GetBuffedStatistic(
+                            statisticType, self)
+        equipmentSets = self.GetEquipmentSet()
+        for equipmentSet in equipmentSets:
+            setBuffPercent = Equipment.GetSetBuff(equipmentSet, self)
             for statisticType in StatisticType:
-                finalStats[statisticType] += setBuffPercent.get(statisticType, 0)
-        return finalStats
+                self.finalStatistics[statisticType] += setBuffPercent.get(
+                    statisticType, 0)
 
-    @staticmethod
-    def GetAverageAttack(finalStats):
-        atk = finalStats[StatisticType.Attack]
-        crtRate = finalStats[StatisticType.CrtRate]
-        crtDmg = finalStats[StatisticType.CrtDmg]
+    def GetAverageAttack(self, finalStats):
+        atk = self.finalStatistics[StatisticType.Attack]
+        crtRate = self.finalStatistics[StatisticType.CrtRate]
+        crtDmg = self.finalStatistics[StatisticType.CrtDmg]
         return atk * (1 + crtRate * crtDmg * 0.0001)
+
+    def GetPriorityStatisticValue(self):
+        if self.priorityStatisticType == StatisticType.Attack:
+            return self.GetAverageAttack()
+        else:
+            return self.finalStatistics[self.priorityStatisticType]
 
     def ToString(self):
         thisString = "Guardian #" + str(self.id) + "\n"
-        thisString += self.GetAlignedText(2, "Name", True, ": ") + str(self.name) + "\n"
+        thisString += self.GetAlignedText(2, "Name", True, ": ") + str(
+            self.name) + "\n"
 
         thisString += self.GetAlignedText(2, "Equipment IDs", True, ": ")
         for equipmentType in EquipmentType:
-            if self.equipments.has_key(equipmentType):
+            if equipmentType in self.equipments:
                 thisString += str(self.equipments[equipmentType].id) + " "
             else:
                 thisString += "0 "
         thisString += "\n"
-        
-        thisString += self.GetAlignedText(2, " ", True, " ") + "       ATK       DEF    PINCER        HP   CRTRATE    CRTDMG       ACC       RES\n"
+
+        thisString += self.GetAlignedText(
+            2, " ", True, " "
+        ) + "       ATK       DEF    PINCER        HP   CRTRATE    CRTDMG       ACC       RES\n"
 
         thisString += self.GetAlignedText(2, "Base Statistic", True, ":")
         for statisticType in StatisticType:
-            thisString += str(self.statistics[statisticType]).rjust(10)
+            thisString += str(self.baseStatistics[statisticType]).rjust(10)
         thisString += "\n"
 
         thisString += self.GetAlignedText(2, "Collection Effect", True, ":")
@@ -109,33 +145,38 @@ class Guardian:
         thisString += "\n"
 
         for equipmentType in EquipmentType:
-            thisString += self.GetAlignedText(4, equipmentType.name + " Buff ", True, ":")
+            thisString += self.GetAlignedText(4, equipmentType.name + " Buff ",
+                                              True, ":")
             for statisticType in StatisticType:
-                if self.equipments.has_key(equipmentType):
-                    thisString += str(self.equipments[equipmentType].GetBuffedStatistic(statisticType, self)).rjust(10)
+                if equipmentType in self.equipments:
+                    thisString += str(
+                        self.equipments[equipmentType].GetBuffedStatistic(
+                            statisticType, self)).rjust(10)
             thisString += "\n"
-        
+
         equipmentSet = self.GetEquipmentSet()
         for set in equipmentSet:
             thisString += self.GetAlignedText(2, str(set), True, ":")
             setBuffPercent = Equipment.GetSetBuff(set, self)
             for statisticType in StatisticType:
-                thisString += str(setBuffPercent.get(statisticType, 0)).rjust(10)
+                thisString += str(setBuffPercent.get(statisticType,
+                                                     0)).rjust(10)
             for specialAbility in SpecialAbility:
-                thisString += "    " + str(setBuffPercent.get(specialAbility, ""))
+                thisString += "    " + str(
+                    setBuffPercent.get(specialAbility, ""))
             thisString += "\n"
 
-        finalStats = self.CalculateFinalStats()
         thisString += self.GetAlignedText(2, "Final Statistic", True, ":")
         for statisticType in StatisticType:
-            thisString += str(finalStats[statisticType]).rjust(10)
+            thisString += str(self.finalStatistics[statisticType]).rjust(10)
         thisString += "\n"
 
-        thisString += self.GetAlignedText(2, "Average ATK", True, ":") + str(Guardian.GetAverageAttack(finalStats)).rjust(10)
+        thisString += self.GetAlignedText(2, "Average ATK", True, ":") + str(
+            Guardian.GetAverageAttack()).rjust(10)
 
         return thisString
 
-    def GetAlignedText(self, indent, text, alignLeft = True, suffixText = ""):
+    def GetAlignedText(self, indent, text, alignLeft=True, suffixText=""):
         width = 33
         alignedText = ""
         for i in range(indent):

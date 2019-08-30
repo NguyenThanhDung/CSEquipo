@@ -56,7 +56,7 @@ def Optimize1(guardianList, equipmentList):
 
 def main():
     equipmentList = EquipmentList("data/equipments.json")
-    guardianList = GuardianList("data/simplifiedGuardians.json", True)
+    guardianList = GuardianList("data/guardians.json", False)
     optimizer = Optimizer()
     optimizedGuardians = optimizer.Optimize(guardianList.guardians, equipmentList.equipments)
     return None

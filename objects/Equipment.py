@@ -85,7 +85,7 @@ class Equipment:
     
     def GetBuffedStatistic(self, statisticType, guardian):
         if statisticType.value <= StatisticType.HP.value:
-            return guardian.statistics[statisticType] * self.statistics[statisticType][ValueType.Percent] / 100 + self.statistics[statisticType][ValueType.Plus]
+            return guardian.baseStatistics[statisticType] * self.statistics[statisticType][ValueType.Percent] / 100 + self.statistics[statisticType][ValueType.Plus]
         else:
             return self.statistics[statisticType]
 
@@ -109,13 +109,13 @@ class Equipment:
     def GetSetBuff(setType, guardian):
         setBuff = {}
         if setType == SetType.Strike:
-            setBuff[StatisticType.Attack] = guardian.statistics[StatisticType.Attack] * 0.1
+            setBuff[StatisticType.Attack] = guardian.baseStatistics[StatisticType.Attack] * 0.1
         elif setType == SetType.Guard:
-            setBuff[StatisticType.Defend] = guardian.statistics[StatisticType.Defend] * 0.1
+            setBuff[StatisticType.Defend] = guardian.baseStatistics[StatisticType.Defend] * 0.1
         elif setType == SetType.Pincer:
-            setBuff[StatisticType.PincerAttack] = guardian.statistics[StatisticType.PincerAttack] * 0.1
+            setBuff[StatisticType.PincerAttack] = guardian.baseStatistics[StatisticType.PincerAttack] * 0.1
         elif setType == SetType.Energy:
-            setBuff[StatisticType.HP] = guardian.statistics[StatisticType.HP] * 0.1
+            setBuff[StatisticType.HP] = guardian.baseStatistics[StatisticType.HP] * 0.1
         elif setType == SetType.Blade:
             setBuff[StatisticType.CrtRate] = 8
         elif setType == SetType.Violent:
