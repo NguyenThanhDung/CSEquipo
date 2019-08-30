@@ -171,8 +171,8 @@ class Guardian:
             thisString += str(self.finalStatistics[statisticType]).rjust(10)
         thisString += "\n"
 
-        thisString += self.GetAlignedText(2, "Average ATK", True, ":") + str(
-            self.GetAverageAttack()).rjust(10)
+        thisString += self.GetAlignedText(2, "Average ATK", True, ":") + str(round(
+            self.GetAverageAttack())).rjust(10)
 
         return thisString
 
