@@ -20,7 +20,7 @@ class Optimizer:
     def RemoveEquipmentSet(self, equipmentsWithType, equipmentSet):
         for equipmentType in EquipmentType:
             equipmentsWithType[equipmentType].remove(equipmentSet[equipmentType])
-        return None
+        return equipmentsWithType
 
 
     def Optimize(self, guardians, equipments):
