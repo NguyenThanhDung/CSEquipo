@@ -59,6 +59,9 @@ def main():
     guardianList = GuardianList("data/guardians.json", False)
     optimizer = Optimizer()
     optimizedGuardians = optimizer.Optimize(guardianList.guardians, equipmentList.equipments)
+    for guardian in optimizedGuardians:
+        print(guardian.ToString())
+    print("Optimize Time: " + optimizer.GetOptimizeTime())
     return None
 
 if __name__ == "__main__":
