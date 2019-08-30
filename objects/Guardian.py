@@ -105,7 +105,7 @@ class Guardian:
                 self.finalStatistics[statisticType] += setBuffPercent.get(
                     statisticType, 0)
 
-    def GetAverageAttack(self, finalStats):
+    def GetAverageAttack(self):
         atk = self.finalStatistics[StatisticType.Attack]
         crtRate = self.finalStatistics[StatisticType.CrtRate]
         crtDmg = self.finalStatistics[StatisticType.CrtDmg]
@@ -172,7 +172,7 @@ class Guardian:
         thisString += "\n"
 
         thisString += self.GetAlignedText(2, "Average ATK", True, ":") + str(
-            Guardian.GetAverageAttack()).rjust(10)
+            self.GetAverageAttack()).rjust(10)
 
         return thisString
 
