@@ -2,7 +2,7 @@
     "GuardianList": [
         {
             "ID": 97,
-            "Guardian": "Dia",
+            "Name": "Dia",
             "Base ATK": 2039,
             "Base DEF": 946,
             "Base Pincer": 1056,
@@ -23,7 +23,7 @@
         },
         {
             "ID": 125,
-            "Guardian": "Jomungand",
+            "Name": "Jomungand",
             "Base ATK": 1548,
             "Base DEF": 1032,
             "Base Pincer": 1204,
@@ -44,7 +44,7 @@
         },
         {
             "ID": 127,
-            "Guardian": "Habanerin",
+            "Name": "Habanerin",
             "Base ATK": 1893,
             "Base DEF": 929,
             "Base Pincer": 998,
@@ -65,7 +65,7 @@
         },
         {
             "ID": 129,
-            "Guardian": "Bergis",
+            "Name": "Bergis",
             "Base ATK": 1445,
             "Base DEF": 1032,
             "Base Pincer": 1032,
@@ -86,7 +86,7 @@
         },
         {
             "ID": 131,
-            "Guardian": "Habanerin",
+            "Name": "Habanerin",
             "Base ATK": 1492,
             "Base DEF": 732,
             "Base Pincer": 787,
@@ -103,11 +103,11 @@
             "Collection Effect CRT DMG": 0,
             "Collection Effect ACC": 0,
             "Collection Effect RES": 0,
-            "Prior Statistic": "HP"
+            "Prior Statistic": "ATK"
         },
         {
             "ID": 142,
-            "Guardian": "Bergis",
+            "Name": "Bergis",
             "Base ATK": 1445,
             "Base DEF": 1032,
             "Base Pincer": 1032,

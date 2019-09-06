@@ -19,7 +19,7 @@ class GuardianList:
                 guardians.append(guardian)
         else:
             for guarSon in jsonData["GuardianList"]:
-                guardian = Guardian(guarSon["ID"], guarSon["Guardian"], guarSon["Base ATK"], guarSon["Base DEF"], 
+                guardian = Guardian(guarSon["ID"], guarSon["Name"], guarSon["Base ATK"], guarSon["Base DEF"], 
                 guarSon["Base Pincer"], guarSon["Base HP"], guarSon["Base CRT Rate"], guarSon["Base CRT DMG"], 
                 guarSon["Base ACC"], guarSon["Base RES"], guarSon["Collection Effect ATK"], guarSon["Collection Effect DEF"],
                 guarSon["Collection Effect Pincer ATK"], guarSon["Collection Effect HP"], guarSon["Collection Effect CRT Rate"],

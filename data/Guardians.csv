@@ -1,6 +1,7 @@
-ID,Guardian,Base ATK,Base DEF,Base Pincer,Base HP,Base CRT Rate,Base CRT DMG,Base ACC,Base RES,Collection Effect ATK,Collection Effect DEF,Collection Effect Pincer ATK,Collection Effect HP,Collection Effect CRT Rate,Collection Effect CRT DMG,Collection Effect ACC,Collection Effect RES
-1,Lubu,1408,774,880,8241,15,50,0,0,0,0,0,0,0,0,0,0
-2,Edele,1015,687,716,8124,15,50,0,0,0,0,0,15,0,0,0,0
-3,Finn,1254,627,776,7079,15,50,0,0,0,0,15,0,0,0,0,0
-4,Hades,1583,688,791,7228,15,50,0,0,0,0,0,0,0,0,0,0
-5,Langmar,534,571,442,4700,15,50,0,0,0,20,0,0,0,0,0,0
+ID,Name,Base ATK,Base DEF,Base Pincer,Base HP,Base CRT Rate,Base CRT DMG,Base ACC,Base RES,Collection Effect ATK,Collection Effect DEF,Collection Effect Pincer ATK,Collection Effect HP,Collection Effect CRT Rate,Collection Effect CRT DMG,Collection Effect ACC,Collection Effect RES,Prior Statistic
+97,Dia,2039,946,1056,9178,15,50,0,0,0,0,0,0,0,0,0,0,ATK
+125,Jomungand,1548,1032,1204,9293,15,50,0,0,0,0,0,0,0,0,0,0,HP
+127,Habanerin,1893,929,998,8674,15,50,0,0,0,0,0,0,0,0,0,0,ATK
+129,Bergis,1445,1032,1032,10739,15,50,0,0,0,0,0,0,0,0,0,0,HP
+131,Habanerin,1492,732,787,6839,15,50,0,0,0,0,0,0,0,0,0,0,ATK
+142,Bergis,1445,1032,1032,10739,15,50,0,0,0,0,0,0,0,0,0,0,HP
