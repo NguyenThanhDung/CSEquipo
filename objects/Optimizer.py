@@ -44,7 +44,7 @@ class Optimizer:
                                     guardian.Equip(currentEquipmentSet)
                                     currentStatisticValue = guardian.GetPriorityStatisticValue()
                                     if maxStatisticValue < currentStatisticValue:
-                                        print("Found max set with value " + str(currentStatisticValue))
+                                        print("Found max set with value " + str(round(currentStatisticValue)))
                                         maxStatisticValue = currentStatisticValue
             equipmentsWithType = self.RemoveEquipmentSet(equipmentsWithType, guardian.GetEquipments())
         now = datetime.datetime.now()

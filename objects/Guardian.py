@@ -169,8 +169,9 @@ class Guardian:
             for statisticType in StatisticType:
                 if equipmentType in self.equipments:
                     thisString += str(
-                        self.equipments[equipmentType].GetBuffedStatistic(
-                            statisticType, self)).rjust(10)
+                        round(
+                            self.equipments[equipmentType].GetBuffedStatistic(
+                                statisticType, self))).rjust(10)
             thisString += "\n"
 
         equipmentSets = self.GetEquipmentSet()
@@ -178,8 +179,8 @@ class Guardian:
             thisString += self.GetAlignedText(2, str(equipmentSet), True, ":")
             setBuffPercent = Equipment.GetSetBuff(equipmentSet, self)
             for statisticType in StatisticType:
-                thisString += str(setBuffPercent.get(statisticType,
-                                                     0)).rjust(10)
+                thisString += str(round(setBuffPercent.get(statisticType,
+                                                           0))).rjust(10)
             for specialAbility in SpecialAbility:
                 thisString += "    " + str(
                     setBuffPercent.get(specialAbility, ""))
@@ -187,11 +188,12 @@ class Guardian:
 
         thisString += self.GetAlignedText(2, "Final Statistic", True, ":")
         for statisticType in StatisticType:
-            thisString += str(self.finalStatistics[statisticType]).rjust(10)
+            thisString += str(round(
+                self.finalStatistics[statisticType])).rjust(10)
         thisString += "\n"
 
-        thisString += self.GetAlignedText(2, "Average ATK", True, ":") + str(round(
-            self.GetAverageAttack())).rjust(10)
+        thisString += self.GetAlignedText(2, "Average ATK", True, ":") + str(
+            round(self.GetAverageAttack())).rjust(10)
 
         return thisString
 
