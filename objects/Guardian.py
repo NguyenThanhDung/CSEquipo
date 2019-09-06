@@ -9,7 +9,8 @@ class Guardian:
                  acc, res, collectionEffectAtk, collectionEffectDef,
                  collectionEffectPincerAtk, collectionEffectHp,
                  collectionEffectCrtRate, collectionEffectCrtDmg,
-                 collectionEffectAcc, collectionEffectRes):
+                 collectionEffectAcc, collectionEffectRes,
+                 priorityStatisticType):
         self.id = int(id)
         self.name = name
 
@@ -56,8 +57,27 @@ class Guardian:
         self.finalStatistics[StatisticType.Accuracy] = 0
         self.finalStatistics[StatisticType.Resistance] = 0
 
-        # TODO: Get value from json
-        self.priorityStatisticType = StatisticType.HP
+        self.priorityStatisticType = self.StringToStatType(
+            priorityStatisticType)
+
+    def StringToStatType(self, statString):
+        if statString == "ATK":
+            return StatisticType.Attack
+        if statString == "DEF":
+            return StatisticType.Defend
+        if statString == "Pincer ATK":
+            return StatisticType.PincerAttack
+        if statString == "HP":
+            return StatisticType.HP
+        if statString == "CRT Rate":
+            return StatisticType.CrtRate
+        if statString == "CRT DMG":
+            return StatisticType.CrtDmg
+        if statString == "ACC":
+            return StatisticType.Accuracy
+        if statString == "RES":
+            return StatisticType.Resistance
+        return None
 
     def Equip(self, equipments):
         for equipment in equipments:
@@ -96,8 +116,7 @@ class Guardian:
             for equipmentType in EquipmentType:
                 if self.equipments[equipmentType] != None:
                     self.finalStatistics[statisticType] += self.equipments[
-                        equipmentType].GetBuffedStatistic(
-                            statisticType, self)
+                        equipmentType].GetBuffedStatistic(statisticType, self)
         equipmentSets = self.GetEquipmentSet()
         for equipmentSet in equipmentSets:
             setBuffPercent = Equipment.GetSetBuff(equipmentSet, self)
@@ -154,10 +173,10 @@ class Guardian:
                             statisticType, self)).rjust(10)
             thisString += "\n"
 
-        equipmentSet = self.GetEquipmentSet()
-        for set in equipmentSet:
-            thisString += self.GetAlignedText(2, str(set), True, ":")
-            setBuffPercent = Equipment.GetSetBuff(set, self)
+        equipmentSets = self.GetEquipmentSet()
+        for equipmentSet in equipmentSets:
+            thisString += self.GetAlignedText(2, str(equipmentSet), True, ":")
+            setBuffPercent = Equipment.GetSetBuff(equipmentSet, self)
             for statisticType in StatisticType:
                 thisString += str(setBuffPercent.get(statisticType,
                                                      0)).rjust(10)

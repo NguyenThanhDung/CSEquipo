@@ -23,7 +23,7 @@ class GuardianList:
                 guarSon["Base Pincer"], guarSon["Base HP"], guarSon["Base CRT Rate"], guarSon["Base CRT DMG"], 
                 guarSon["Base ACC"], guarSon["Base RES"], guarSon["Collection Effect ATK"], guarSon["Collection Effect DEF"],
                 guarSon["Collection Effect Pincer ATK"], guarSon["Collection Effect HP"], guarSon["Collection Effect CRT Rate"],
-                guarSon["Collection Effect CRT DMG"], guarSon["Collection Effect ACC"], guarSon["Collection Effect RES"])
+                guarSon["Collection Effect CRT DMG"], guarSon["Collection Effect ACC"], guarSon["Collection Effect RES"], guarSon["Prior Statistic"])
                 guardians.append(guardian)
         return guardians
 
