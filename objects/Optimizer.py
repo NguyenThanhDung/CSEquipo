@@ -31,6 +31,7 @@ class Optimizer:
     def Optimize(self, guardians, equipments):
         self.startTime = datetime.datetime.now()
         equipmentsWithType = self.GetEquipmentsByType(equipments)
+        count = 0
         for guardian in guardians:
             print("Finding best equipment set for #" + str(guardian.id) + " " + guardian.name)
             maxStatisticValue = 0
@@ -44,8 +45,14 @@ class Optimizer:
                                     guardian.Equip(currentEquipmentSet)
                                     currentStatisticValue = guardian.GetPriorityStatisticValue()
                                     if maxStatisticValue < currentStatisticValue:
-                                        print("Found max set with value " + str(round(currentStatisticValue)))
+                                        print("\nFound max set with value " + str(round(currentStatisticValue)))
                                         maxStatisticValue = currentStatisticValue
+                                    else:
+                                        if count > 100:
+                                            print(".", end='')
+                                            count = 0
+                                        else:
+                                            count += 1
             equipmentsWithType = self.RemoveEquipmentSet(equipmentsWithType, guardian.GetEquipments())
         now = datetime.datetime.now()
         self.optimizeTime = now - self.startTime
