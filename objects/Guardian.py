@@ -79,7 +79,15 @@ class Guardian:
             return StatisticType.Resistance
         return None
 
-    def Equip(self, equipments):
+    def EquipSingle(self, newEquipment):
+        for equipmentType in EquipmentType:
+            if equipmentType == newEquipment.type:
+                self.equipments[equipmentType] = newEquipment
+            else:
+                self.equipments[equipmentType] = None
+        self.CalculateFinalStats()
+
+    def EquipWholeSet(self, equipments):
         for equipment in equipments:
             self.equipments[equipment.type] = equipment
         self.CalculateFinalStats()
@@ -92,20 +100,20 @@ class Guardian:
 
     def GetEquipmentSet(self):
         setCount = {}
-        if len(self.equipments) > 0:
-            for equipmentType in EquipmentType:
-                if equipmentType in self.equipments:
-                    equipmentSet = self.equipments[equipmentType].set
-                    if equipmentSet in setCount:
-                        setCount[equipmentSet] = setCount[equipmentSet] + 1
-                    else:
-                        setCount[equipmentSet] = 1
-        sets = []
+        for equipmentType in EquipmentType:
+            if self.equipments[equipmentType] == None:
+                continue
+            equipmentSet = self.equipments[equipmentType].set
+            if equipmentSet in setCount:
+                setCount[equipmentSet] = setCount[equipmentSet] + 1
+            else:
+                setCount[equipmentSet] = 1
+        equipmentSets = []
         for key in setCount.keys():
             while setCount[key] >= 2:
-                sets.append(key)
+                equipmentSets.append(key)
                 setCount[key] = setCount[key] - 2
-        return sets
+        return equipmentSets
 
     def CalculateFinalStats(self):
         for statisticType in StatisticType:

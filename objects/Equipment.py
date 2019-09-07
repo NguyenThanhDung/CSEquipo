@@ -40,6 +40,8 @@ class Equipment:
         self.starCount = starCount
         self.level = level
 
+        self.score = 0
+
     def EquipmentNameToEquipmentType(self, equipmentName):
         if equipmentName == "Weapon":
             return EquipmentType.Weapon

@@ -11,10 +11,16 @@ class EquipmentList:
     def Load(self, fileName):
         with open(fileName) as fileData:
             jsonData = json.load(fileData)
-        equipments = []
+        equipments = {}
+        equipments[EquipmentType.Weapon] = []
+        equipments[EquipmentType.Armor] = []
+        equipments[EquipmentType.Shield] = []
+        equipments[EquipmentType.Gloves] = []
+        equipments[EquipmentType.Necklace] = []
+        equipments[EquipmentType.Ring] = []
         for quipSon in jsonData["Equipments"]:
             equipment = Equipment(quipSon["ID"], quipSon["Type"], quipSon["ATK %"], quipSon["ATK +"], quipSon["DEF %"], quipSon["DEF +"], quipSon["Pincer ATK %"], quipSon["Pincer ATK +"], quipSon["HP %"], quipSon["HP +"], quipSon["CRT Rate"], quipSon["CRT DMG"], quipSon["ACC"], quipSon["RES"], quipSon["Set"], quipSon["Stars"], quipSon["+"])
-            equipments.append(equipment)
+            equipments[equipment.type].append(equipment)
         return equipments
     
     def GetEquipmentAt(self, index):
