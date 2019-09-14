@@ -6,7 +6,7 @@ Finding best equipment set for #131 Habanerin
 Finding best equipment set for #142 Bergis
 Guardian #97
   Name                           : Dia
-  Equipment IDs                  : 57 14 107 46 61 123
+  Equipment IDs                  : 57 14 107 46 61 34
                                          ATK       DEF    PINCER        HP   CRTRATE    CRTDMG       ACC       RES
   Base Statistic                 :      2039       946      1056      9178        15        50         0         0
   Collection Effect              :         0         0         0         0         0         0         0         0
@@ -15,11 +15,11 @@ Guardian #97
     Shield Buff                  :         0       587        10       459        10         6         0        12
     Gloves Buff                  :       408         0       655       551         0         4        14         0
     Necklace Buff                :      1264         0         0       965         0         0         5        19
-    Ring Buff                    :       367         0        95      5690         4        12         0         0
+    Ring Buff                    :       449       530        95       551         0         5         0         0
+  SetType.Strike                 :       204         0         0         0         0         0         0         0
   SetType.Focus                  :         0         0         0         0         0         0        15         0
-  SetType.Pincer                 :         0         0       106         0         0         0         0         0
-  Final Statistic                :      5750      1555      1921     22992        47        93        38        31
-  Average ATK                    :      8263
+  Final Statistic                :      6035      2084      1816     17852        43        86        38        31
+  Average ATK                    :      8267
 Guardian #125
   Name                           : Jomungand
   Equipment IDs                  : 202 138 26 146 209 48
@@ -38,7 +38,7 @@ Guardian #125
   Average ATK                    :      4663
 Guardian #127
   Name                           : Habanerin
-  Equipment IDs                  : 118 217 222 96 230 4
+  Equipment IDs                  : 118 217 222 96 230 123
                                          ATK       DEF    PINCER        HP   CRTRATE    CRTDMG       ACC       RES
   Base Statistic                 :      1893       929       998      8674        15        50         0         0
   Collection Effect              :         0         0         0         0         0         0         0         0
@@ -46,12 +46,12 @@ Guardian #127
     Armor Buff                   :       341        46         0      4857         8         0        14         0
     Shield Buff                  :         0       520         0       979        10         4         0         0
     Gloves Buff                  :       303        27       619         0         8         0         0         8
-    Necklace Buff                :      1060       130         0       434         7         0         9         0
-    Ring Buff                    :       303        46         0       781        11         0        39         0
+    Necklace Buff                :      1060       130        13       434         7         0         9         0
+    Ring Buff                    :       341         0        90      5378         4        12         0         0
   SetType.Guard                  :         0        93         0         0         0         0         0         0
   SetType.Pincer                 :         0         0       100         0         0         0         0         0
-  Final Statistic                :      5073      1792      1766     16158        66        75        62         8
-  Average ATK                    :      7584
+  Final Statistic                :      5111      1746      1869     20756        59        87        23         8
+  Average ATK                    :      7735
 Guardian #129
   Name                           : Bergis
   Equipment IDs                  : 143 174 83 127 141 56
@@ -70,7 +70,7 @@ Guardian #129
   Average ATK                    :      3274
 Guardian #131
   Name                           : Habanerin
-  Equipment IDs                  : 147 112 139 140 195 110
+  Equipment IDs                  : 147 112 139 140 195 4
                                          ATK       DEF    PINCER        HP   CRTRATE    CRTDMG       ACC       RES
   Base Statistic                 :      1492       732       787      6839        15        50         0         0
   Collection Effect              :         0         0         0         0         0         0         0         0
@@ -79,10 +79,10 @@ Guardian #131
     Shield Buff                  :         0       454         0       684         4        17        10         0
     Gloves Buff                  :       269        73       488       342         0         0         0         5
     Necklace Buff                :       859         0         0       963         0         0         4        18
-    Ring Buff                    :       298       454         0        85         0         0         5        10
+    Ring Buff                    :       239        37         0       616        11         0        39         0
   SetType.Guard                  :         0        73         0         0         0         0         0         0
-  Final Statistic                :      4081      1786      1393     13952        34        78        27        37
-  Average ATK                    :      5164
+  Final Statistic                :      4022      1369      1393     14483        45        78        61        27
+  Average ATK                    :      5433
 Guardian #142
   Name                           : Bergis
   Equipment IDs                  : 41 119 186 114 97 104
@@ -99,4 +99,4 @@ Guardian #142
   SetType.Focus                  :         0         0         0         0         0         0        15         0
   Final Statistic                :      3107      1778      2033     29848        67        64        45         8
   Average ATK                    :      4439
-Optimize Time: 0:00:00.790691
+Optimize Time: 0:00:00.866888
