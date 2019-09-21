@@ -4,9 +4,11 @@ Finding best equipment set for #127 Habanerin
 Finding best equipment set for #129 Bergis
 Finding best equipment set for #131 Habanerin
 Finding best equipment set for #142 Bergis
+Finding best equipment set for #152 Teresa
+Finding best equipment set for #153 Teresa
 Guardian #97
   Name                           : Dia
-  Equipment IDs                  : 57 14 107 46 61 34
+  Equipment IDs                  : 57 14 107 46 230 34
                                          ATK       DEF    PINCER        HP   CRTRATE    CRTDMG       ACC       RES
   Base Statistic                 :      2039       946      1056      9178        15        50         0         0
   Collection Effect              :         0         0         0         0         0         0         0         0
@@ -14,12 +16,12 @@ Guardian #97
     Armor Buff                   :       408        22         0      5140         8         5         0         0
     Shield Buff                  :         0       587        10       459        10         6         0        12
     Gloves Buff                  :       408         0       655       551         0         4        14         0
-    Necklace Buff                :      1264         0         0       965         0         0         5        19
+    Necklace Buff                :      1264       132        13       459         7         0         9         0
     Ring Buff                    :       449       530        95       551         0         5         0         0
   SetType.Strike                 :       204         0         0         0         0         0         0         0
-  SetType.Focus                  :         0         0         0         0         0         0        15         0
-  Final Statistic                :      6035      2084      1816     17852        43        86        38        31
-  Average ATK                    :      8267
+  SetType.Guard                  :         0        95         0         0         0         0         0         0
+  Final Statistic                :      6035      2311      1829     17346        50        86        27        12
+  Average ATK                    :      8631
 Guardian #125
   Name                           : Jomungand
   Equipment IDs                  : 202 138 26 146 209 48
@@ -38,26 +40,25 @@ Guardian #125
   Average ATK                    :      4663
 Guardian #127
   Name                           : Habanerin
-  Equipment IDs                  : 118 217 222 96 230 123
+  Equipment IDs                  : 118 217 222 96 61 123
                                          ATK       DEF    PINCER        HP   CRTRATE    CRTDMG       ACC       RES
   Base Statistic                 :      1893       929       998      8674        15        50         0         0
-  Collection Effect              :         0         0         0         0         0         0         0         0
+  Collection Effect              :     94.65         0         0         0         0         0         0         0
     Weapon Buff                  :      1174         0        50       434         7        21         0         0
     Armor Buff                   :       341        46         0      4857         8         0        14         0
     Shield Buff                  :         0       520         0       979        10         4         0         0
     Gloves Buff                  :       303        27       619         0         8         0         0         8
-    Necklace Buff                :      1060       130        13       434         7         0         9         0
+    Necklace Buff                :      1174         0         0       934         0         0         5        19
     Ring Buff                    :       341         0        90      5378         4        12         0         0
-  SetType.Guard                  :         0        93         0         0         0         0         0         0
   SetType.Pincer                 :         0         0       100         0         0         0         0         0
-  Final Statistic                :      5111      1746      1869     20756        59        87        23         8
-  Average ATK                    :      7735
+  Final Statistic                :      5319      1523      1856     21256        52        87        19        27
+  Average ATK                    :      7726
 Guardian #129
   Name                           : Bergis
   Equipment IDs                  : 143 174 83 127 141 56
                                          ATK       DEF    PINCER        HP   CRTRATE    CRTDMG       ACC       RES
   Base Statistic                 :      1445      1032      1032     10739        15        50         0         0
-  Collection Effect              :         0         0         0         0         0         0         0         0
+  Collection Effect              :         0         0         0    536.95         0         0         0         0
     Weapon Buff                  :       809         0        85      1503         0         0         9         0
     Armor Buff                   :       318        41        20      6658         0         0         0         5
     Shield Buff                  :         0       640        18      1718         0         0         8         9
@@ -66,37 +67,68 @@ Guardian #129
     Ring Buff                    :        58         9         0      6658        11        10         0        15
   SetType.Focus                  :         0         0         0         0         0         0        15         0
   SetType.Strike                 :       144         0         0         0         0         0         0         0
-  Final Statistic                :      2774      2523      1836     31250        30        60        32        37
+  Final Statistic                :      2774      2523      1836     31787        30        60        32        37
   Average ATK                    :      3274
 Guardian #131
   Name                           : Habanerin
-  Equipment IDs                  : 147 112 139 140 195 4
+  Equipment IDs                  : 147 112 139 54 195 4
                                          ATK       DEF    PINCER        HP   CRTRATE    CRTDMG       ACC       RES
   Base Statistic                 :      1492       732       787      6839        15        50         0         0
-  Collection Effect              :         0         0         0         0         0         0         0         0
+  Collection Effect              :      74.6         0         0         0         0         0         0         0
     Weapon Buff                  :       925         0        87       799        15         0         0         4
     Armor Buff                   :       239         0        31      4240         0        11         8         0
     Shield Buff                  :         0       454         0       684         4        17        10         0
-    Gloves Buff                  :       269        73       488       342         0         0         0         5
+    Gloves Buff                  :       164        37       488         0         4        24         0         0
     Necklace Buff                :       859         0         0       963         0         0         4        18
     Ring Buff                    :       239        37         0       616        11         0        39         0
   SetType.Guard                  :         0        73         0         0         0         0         0         0
-  Final Statistic                :      4022      1369      1393     14483        45        78        61        27
-  Average ATK                    :      5433
+  Final Statistic                :      3992      1332      1393     14141        49       102        61        22
+  Average ATK                    :      5987
 Guardian #142
   Name                           : Bergis
-  Equipment IDs                  : 41 119 186 114 97 104
+  Equipment IDs                  : 210 119 126 140 177 250
                                          ATK       DEF    PINCER        HP   CRTRATE    CRTDMG       ACC       RES
   Base Statistic                 :      1445      1032      1032     10739        15        50         0         0
-  Collection Effect              :         0         0         0         0         0         0         0         0
-    Weapon Buff                  :       809         0        62      1396         0         5        13         0
+  Collection Effect              :         0         0         0    536.95         0         0         0         0
+    Weapon Buff                  :       809         0        41         0        15         9         5         4
     Armor Buff                   :       173        13        83      6658         6         0         4         0
-    Shield Buff                  :         0       640        93      1717         3         0        13         0
-    Gloves Buff                  :       217         0       640      1164         0         0         0         8
-    Necklace Buff                :       159         0        10      1837        43         5         0         0
-    Ring Buff                    :       159        93       114      6336         0         4         0         0
-  SetType.Strike                 :       144         0         0         0         0         0         0         0
+    Shield Buff                  :         0       640        62       430         8         5        25         0
+    Gloves Buff                  :       260       103       640       537         0         0         0         5
+    Necklace Buff                :       279        93        52         0        43         0        10         0
+    Ring Buff                    :       173         9         0         0        10        12        39         0
+  SetType.Guard                  :         0       103         0         0         0         0         0         0
   SetType.Focus                  :         0         0         0         0         0         0        15         0
-  Final Statistic                :      3107      1778      2033     29848        67        64        45         8
-  Average ATK                    :      4439
-Optimize Time: 0:00:00.866888
+  Final Statistic                :      3140      1993      1909     18901        97        76        98         9
+  Average ATK                    :      5455
+Guardian #152
+  Name                           : Teresa
+  Equipment IDs                  : 1 130 120 78 109 74
+                                         ATK       DEF    PINCER        HP   CRTRATE    CRTDMG       ACC       RES
+  Base Statistic                 :       768       748       571      5675        15        50         0         0
+  Collection Effect              :         0      37.4         0         0         0         0         0         0
+    Weapon Buff                  :       476         0         0         0         7         9         4        17
+    Armor Buff                   :         0       194         0      3518         3        10         0         4
+    Shield Buff                  :         0       464        57       340         4        15         0        13
+    Gloves Buff                  :        68       150       354         0         0         0        10         0
+    Necklace Buff                :       161       474         0         0         0         0         5        10
+    Ring Buff                    :       100       464         0       120         9         4         0         0
+  SetType.Focus                  :         0         0         0         0         0         0        15         0
+  SetType.Strike                 :        77         0         0         0         0         0         0         0
+  Final Statistic                :      1650      2531       982      9654        38        88        34        44
+  Average ATK                    :      2202
+Guardian #153
+  Name                           : Teresa
+  Equipment IDs                  : 173 82 53 189 122 178
+                                         ATK       DEF    PINCER        HP   CRTRATE    CRTDMG       ACC       RES
+  Base Statistic                 :       768       748       571      5675        15        50         0         0
+  Collection Effect              :         0      37.4         0         0         0         0         0         0
+    Weapon Buff                  :       476         0        51       436         6        10         0         0
+    Armor Buff                   :        23       157        34      3348         0         7         8         0
+    Shield Buff                  :         0       464        57       321         7         5         0        10
+    Gloves Buff                  :         0       120       320         0         0         4         9         9
+    Necklace Buff                :        31       464        29         0         0        23         0        10
+    Ring Buff                    :         0       464        55         0        15        11         0         0
+  SetType.Guard                  :         0        75         0         0         0         0         0         0
+  Final Statistic                :      1298      2528      1117      9780        43       110        17        29
+  Average ATK                    :      1912
+Optimize Time: 0:00:00.984668

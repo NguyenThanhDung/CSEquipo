@@ -131,7 +131,7 @@ ID,Type,ATK %,ATK +,DEF %,DEF +,Pincer ATK %,Pincer ATK +,HP %,HP +,CRT Rate,CRT
 131,Necklace,,,20,21,4,,11,,39,,,,Guard,6,15
 132,Armor,6,,5,,,12,11,,,,,5,Pincer,6,0
 133,Ring,,,,,5,15,,,11,19,39,,Strike,6,15
-134,Shield,,,11,,6,,15,,7,,14,,Guard,6,15
+134,Shield,,,62,,6,,15,,7,,14,,Guard,6,15
 135,Shield,,,11,,6,,,,,6,,4,Guard,6,0
 136,Ring,,,5,,4,,,,,5,9,,Pincer,6,0
 137,Weapon,62,,,,11,,11,,,,4,14,Pulverize,6,15
@@ -224,7 +224,7 @@ ID,Type,ATK %,ATK +,DEF %,DEF +,Pincer ATK %,Pincer ATK +,HP %,HP +,CRT Rate,CRT
 227,Armor,,16,,,9,,56,,7,15,,,Strike,6,15
 228,Armor,4,,,,,,11,,4,,,4,Revenge,6,0
 229,Shield,,,11,,,11,5,,4,,,5,Energy,6,0
-230,Necklace,56,,14,,,13,5,,7,,9,,Guard,6,15
+230,Necklace,62,,14,,,13,5,,7,,9,,Guard,6,15
 231,Weapon,11,,,,,,,,3,5,4,5,Energy,6,0
 232,Necklace,,17,11,,4,,5,,,6,,,Violent,6,0
 233,Shield,,,11,,,,,,4,,5,5,Focus,6,0
@@ -237,7 +237,7 @@ ID,Type,ATK %,ATK +,DEF %,DEF +,Pincer ATK %,Pincer ATK +,HP %,HP +,CRT Rate,CRT
 240,Gloves,6,,,12,11,,,,3,,,4,Strike,6,0
 241,Armor,6,,,15,4,,11,,,,,4,Endure,6,0
 242,Armor,,,4,,,9,11,,4,,,5,Strike,6,0
-243,Ring,6,,,,4,9,5,,,,9,,Focus,6,0
+243,Ring,16,,,,10,9,16,,,,39,,Focus,6,15
 244,Armor,,,4,9,5,,11,,,6,,,Endure,6,0
 245,Gloves,,,5,,11,,,,4,,4,,Focus,6,0
 246,Weapon,11,,,,5,,,,4,5,,,Focus,6,0
@@ -256,3 +256,12 @@ ID,Type,ATK %,ATK +,DEF %,DEF +,Pincer ATK %,Pincer ATK +,HP %,HP +,CRT Rate,CRT
 259,Armor,6,,,12,,,11,,,5,5,4,Revenge,6,0
 260,Weapon,11,,,,,8,,,,5,4,4,Revenge,6,0
 261,Armor,,,11,,4,,,88,4,,5,,Blade,6,0
+262,Ring,,,11,,,,,,3,6,,5,Pincer,6,0
+263,Shield,,,,11,6,,,,,,4,5,Pincer,6,0
+264,Ring,6,,6,,11,,6,124,,,,4,Strike,6,0
+265,Shield,,,11,,,,,,4,4,4,,Endure,6,0
+266,Shield,,,11,,6,,5,,,,,4,Strike,6,0
+267,Armor,5,,,,6,,11,,4,5,,,Endure,6,0
+268,Shield,,,11,,5,,4,,4,,,4,Guard,6,0
+269,Shield,,,11,,,,6,,3,,4,5,Focus,6,0
+270,Gloves,4,,,,56,,9,,11,15,,,Endure,6,15
